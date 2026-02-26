@@ -1,0 +1,2 @@
+2/25/2026
+I started my project by writing my proposal. I want to build a ommand-line account book where I can log purchases and review my spending by week or month. This program is very useful, but there are some features that I don't know how to fulfill yet.
