@@ -1,0 +1,44 @@
+Company name: Lago
+Company URL: https://getlago.com/
+
+What is your company going to make?
+Lago is a no-code tool that enables Growth teams to extract, transform and effortlessly take actions on data, without engineers.
+
+In order to be successful, Growth teams need to iterate fast and take actions on data. Yet, because of tech bottlenecks it is impossible: since engineers are scarce and focused on building the product, prioritizing Growth needs over Product development is most of the time a losing battle.
+
+That's why we've productized what a tech team should ideally do for Growth teams: use an ETL to centralize data from different tools to a data warehouse, model it with the help of data scientists, and use a reverse ETL to push it to external tools. Unlike typical datawarehouse setups, our infrastructure refreshes data every minute, not only once a day. Therefore, Lago centralises constantly unified customer data and synchronizes it 2-way with Growth tools, in real time.
+
+Lago's UX is no-code: we want to make sure every Growth team member can use Lago without needing an engineer, nor any tech or SQL skills.
+
+The big picture is to build the tool where all Go-to-Market teams (Growth, Sales, Marketing, Customer Success) collaborate along their users' journey. Today, these teams work in silos, which is sub-efficient. Lago will make cross-teams and cross-tools workflows possible.
+
+Progress
+We wrote our first line of code on January 4th 2021. Before we even had a landing page, 70+ startups had already contacted us (100% inbound) and asked to try our product. Our beta is to be launched in a few weeks. We've been pitching every version of our Figma prototypes to Growth teams since January, allowing us to keep our iteration loops super quick.
+
+Working part-time since October 2020 (discovery/user interviews), full-time since January 2021.
+
+Why did you pick this idea?
+We experienced the problem firsthand at Qonto (backed by P. Thiel, raised 100M+), where we reached the 1M MRR mark 18 months after launch. Customer data was scattered among many tools, and we could not take action on data. We ultimately hired fully dedicated engineers to build our own internal tools. More than 50+ Growth teams from other startups came to us and asked if they could use our internal tools. After Qonto, we re-validated the need by formally interviewing another 100+ Growth leaders in Q4 2020.
+
+What's new about what you're making?
+Lago is no-code, laser-focused on B2B Growth teams' needs. Current substitutes fall short:
+
+Zapier: can send one data point from A to B, does not store data, creates errors and duplicates. Every team that uses it wants to get rid of it.
+Customer Data Platforms: implementation and day-to-day use were tech-intensive, requiring custom code and constant engineering support.
+Data warehouse stack: the exact opposite of what Growth teams want. They want to iterate fast, get fresh data in real time, not depend on engineers for data plumbing.
+
+What do you understand about your business that others don't?
+Making Growth teams dependent on Engineers is a lose-lose setup. Growth teams need to act fast on data, but engineers prefer to focus on products rather than data plumbing. A no-code data overlay adds tremendous value by giving speed and autonomy to Growth teams while freeing engineers to focus on product.
+
+Data warehouses were built for reporting purposes with one refresh per day. Growth teams need real-time data to take relevant actions, and existing stacks were not built for that.
+
+Business Model
+Usage-based pricing model:
+Volume of data (number of users or accounts)
+Number of integrations (Salesforce, Hubspot, Intercom, etc.)
+Number of seats for Go-to-Market team collaboration
+
+Current users spend $1,200 to $15,000 per month on imperfect solutions. Target average ARPU of $1,000/month. Total addressable market currently $4+ billion, projected $18+ billion in 5 years with 30% CAGR in low-code development platforms.
+
+How will you get users?
+First users are companies interviewed during discovery phase or who organically came for advice. Acquisition strategy relies on bottoms-up growth. Key levers include educating growth teams about data (bootstrapped email course with 600+ qualified leads), community building, and targeted SEO/paid campaigns on companies hiring their first growth or data engineers.

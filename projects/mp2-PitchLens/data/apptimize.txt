@@ -1,0 +1,49 @@
+Company name: Apptimize
+Demo: yc.apptimize.com/admin
+
+What is your company going to make?
+Apptimize lets you AB test mobile applications. You keep the native experience without needing to push changes blindly or rely on users to update. There's a web interface to manage experiments and a WYSIWYG interface for non-programmers.
+
+Apptimize removes the pain of designing a controlled experiment, serving variations, collecting results, and calculating statistical significance. Right now you have to be a developer and statistician to AB test a mobile app, but we make it so that non-programmers can AB test too. Apptimize makes optimization as easy for mobile as it is for web. Apptimize technology could transform the process of testing and pushing changes and be integrated into 100% of apps.
+
+Founders
+Nancy: former trader who ran the Fixed Income Quantitative Strategies team at GETCO, world class expert in Fixed Income trading and exchanges.
+
+Jeremy: owned IndexedDB within Chrome, edited the spec, worked closely with Mozilla and Microsoft on the design, wrote most of the initial implementation in Chrome/WebKit, and simultaneously started the London Chrome team.
+
+Met a couple years ago through mutual friends. Both fully committed to Apptimize exclusively for the next few years.
+
+Progress
+Apptimize works and just launched private beta. 100+ signups but only accepted 2 friends to work closely with first customers and shape the product.
+
+Beta includes: Android library, website dashboard to manage experiments, results page showing statistics and conclusions. WYSIWYG interface coming in a few weeks. iOS version also coming soon. Started in January, currently ~8K lines of code. Frontend is JS, CSS, and Angular. Backend on EC2 using PostgreSQL, nginx, and Netty/Java.
+
+Why did you pick this idea?
+Jeremy had looked for a mobile AB testing solution when working on Drawchat but couldn't find one. Three 50+ person companies, 3 YC companies, and 10+ indie developers signed up to beta test. All programmers and contractors interviewed also asked to join the private beta. This is an immediate need for most mobile companies.
+
+Nancy is an expert in experiment design and data analysis. Jeremy is an expert in mobile and scalable backends. Both love being data driven and view life as an experiment.
+
+What's new about what you're making?
+Most companies wait for app store approval and push many changes simultaneously. They eyeball results and haphazardly rollback suspect changes.
+
+Desperate developers resort to basic home-grown solutions. Existing options like Switchboard and Clutch.io have randomization mistakes, poor error handling, and malformed responses that crash apps.
+
+AB testing for mobile is technologically harder than for websites due to intermittent internet, lack of cookies/iframes, and users running different app versions. Existing solutions ignore this complexity. We view handling it as our core business.
+
+Competitors
+Swrve focuses on games. Pathmapp focuses on overall analytics. Abstate is unlaunched. Artisan and Arise.io have buggy, immature products. Biggest risk is that Visual Website Optimizer or Optimizely expands from web into native apps. No dominant player exists because nobody has made anything good yet.
+
+What do you understand about your business that others don't?
+Competitors are developers building for developers, offering only programmatic interfaces. We understand that goal setters and decision makers are often not programmers. Apptimize makes it simple for non-technical owners, product managers, designers, and marketers via a WYSIWYG interface.
+
+Our experimental setup and analysis will be superior. Stanford PhDs helped identify problems with competitors' statistical setups including fixed sample sizes and poor small dataset handling.
+
+We will target companies that don't monetize through app sales but use apps for branding, coupons, and other off-app conversions. First users are indie developers, but most profitable apps make less than $2K per month so we will grow toward corporations like United and Starbucks.
+
+Business Model
+Monthly subscription. Premium customers at $1K per month. 200 customers over 2 years equals roughly $2.4M per year. Artisan claims to charge $1K to $10K per month, suggesting room for higher pricing.
+
+Ultimate vision: become the default way people change their apps. 100% of apps would use Apptimize to test ideas and deliver changes, tightening the development cycle and erasing the line between apps and the web.
+
+How will you get users?
+First customers are friends' startups. For next customers, downloaded their apps and competitors' apps and pre-designed experiments for them so they can start testing instantly on signup. Will offer referral rewards like temporary premium memberships. Will answer Stack Overflow and Quora questions about mobile AB testing. Potential partnerships with App Annie or Parse.

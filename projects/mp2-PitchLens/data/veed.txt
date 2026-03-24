@@ -1,0 +1,50 @@
+Company name: VEED
+Company URL: https://www.veed.io/
+
+What is your company going to make?
+VEED is a simple online video editing platform for short-form content creators, marketers and brands. It is a collaborative cloud platform that renders videos faster than your device and includes tools built for today's production needs.
+
+Users love it because they don't need to install anything. It is accessible on the web, simple to use, yet powerful enough for real edits. It saves them time and helps them create video content that engages their audiences.
+
+Our vision is to give everyone the ability to tell stories and create amazing content through a democratised set of digital tools.
+
+Founders
+Sabba Keynejad (CEO) and Tim Mamadov (CTO). Known each other for over 6 years, met through an online hackathon before realising they lived nearby and had complementary skills in design, branding, marketing and development.
+
+During university they made £14,000 in revenue and £5,000 profit in 5 days selling Breaking Bad Halloween costumes — buying on next day delivery and selling on a 5 day lead time, holding zero stock.
+
+Progress
+Key milestones in just 8 months:
+30,000 users editing videos each month
+40,000 videos being edited each month
+50-80% month-over-month growth
+Live beta product
+Won 3 awards
+Zero marketing spend
+
+Growth since last YC application:
+Previous: 2,000 users/month, 500 videos/month, manual growth
+Current: 30,000 users/month, 40,000 videos/month, 50-80% organic MoM growth
+
+Bootstrapped, working evenings and weekends while contracting. Moving to full-time in April 2019 with 8 months of runway.
+
+Why did you pick this idea?
+Sabba was contracting for Google's production agency in London. The marketing department needed to crop a video and add text for Instagram but didn't have laptops capable of running editing software and were intimidated by the tools available. A quick search revealed a clear gap: lots of demand for online editing tools, almost no good web-based options.
+
+What's new about VEED?
+Fully online, no download required, no signup needed, no watermarks added. Users get access to a complete video editing platform directly in the browser.
+
+Without VEED, users must navigate a fragmented ecosystem of paid and free mobile apps, outdated web tools, or complex desktop software like Final Cut Pro and Adobe After Effects.
+
+Key insight: Existing video editing platforms were designed for films and TV shows, not 10-second clips for Instagram and Twitter. The rising generation of content creators on TikTok and similar platforms needs something entirely different.
+
+Competitors
+Kapwing, Adobe, Apple. Not afraid of competition — focused on building the best product for users and evolving to meet their needs.
+
+Business Model
+Freemium model. Users pay for better quality exports and more tools.
+
+Target: 500,000 monthly users in 2 years with 1% converting at $20/month = $12M annual revenue. Long-term goal of $50M annual revenue in 6 years through enterprise, education, and new product lines.
+
+How will you get users?
+Primary acquisition: search. Over 500,000 people search for online video editing tools each month. Search already accounts for 75% of traffic. Platform naturally performs well due to high session duration and low bounce rate.

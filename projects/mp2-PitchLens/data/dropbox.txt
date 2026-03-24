@@ -1,0 +1,39 @@
+Company name: Dropbox
+Company url: http://www.getdropbox.com/
+
+What is your company going to make?
+Dropbox synchronizes files across your/your team's computers. It's much better than uploading or email, because it's automatic, integrated into Windows, and fits into the way you already work. There's also a web interface, and the files are securely backed up to Amazon S3. Dropbox is kind of like taking the best elements of subversion, trac and rsync and making them "just work" for the average individual or team. Hackers have access to these tools, but normal people don't. It's currently in private beta and I add batches of people every few days.
+
+There are lots of interesting possible features. One is syncing Google Docs/Spreadsheets (or other office web apps) to local .doc and .xls files for offline access, which would be strategically important as few web apps deal with the offline problem.
+
+Founders
+Drew Houston; 24; 2006, MIT, SB computer science. Programming since age 5; startups since age 14; 1600 on SAT; started profitable online SAT prep company in college (accoladeprep.com). For fun last summer reverse engineered the software on a number of poker sites and wrote a real-money playing poker bot.
+
+Although I'm working with other people on Dropbox, strictly speaking I'm the only founder right now. My friend Jeff Mancuso, a great hacker, Stanford grad and creator of Sftpdrive is putting together a Mac port, but can't join as a founder right now as a former cofounder of his started an extremely similar company called Sharpcast. My friend and roommate Tom Hoover from MIT is helping out too, but he works with me at Bit9, and a non-solicit clause in my employment contract prevents me from recruiting him.
+
+In any case, I have several leads, have been networking aggressively, and fully intend to get someone else on board -- another good hacker and/or a more sales-oriented guy. I'm aware that the odds aren't good for single founders, and would rather work with other people anyway.
+
+Progress
+3 months part time. About ~5KLOC client and ~2KLOC server of python, C++, Cheetah templates, installer scripts, etc.
+
+Prototype done in Feb. Beta in people's hands now. Version I can charge for: 6-8 weeks.
+
+What's new about what you're making?
+Most small teams have a few basic needs: (1) team members need their important stuff in front of them wherever they are, (2) everyone needs to be working on the latest version of a given document, (3) and team data needs to be protected from disaster. There are sync tools, backup tools, and web uploading tools, but there's no good integrated solution.
+
+Dropbox solves all these needs, and doesn't need configuration or babysitting. It takes concepts that are proven winners from the dev community (version control, changelogs, rsync) and puts them in a package that anyone can figure out.
+
+At a higher level, online storage and local disks are big and cheap. But the internet links in between have been and will continue to be slow in comparison. The concept that I'm most excited about is that the core technology in Dropbox -- continuous efficient sync with compression and binary diffs -- is what will get us there.
+
+Competitors
+Carbonite and Mozy do a good job with hassle-free backup, and a move into sync would make sense. Sharpcast announced a similar app called Hummingbird. Google's coming out with GDrive at some point. Microsoft's Groove does sync and is part of Office 2007, but is very heavyweight. There are apps like Omnidrive and Titanize but the implementations are buggy or have bad UIs.
+
+What do you understand about your business that other companies don't?
+Competing products work at the wrong layer of abstraction and force the user to constantly think and do things. The "online disk drive" abstraction sucks, because you can't work offline. Anything that depends on manual emailing/uploading is a non-starter, because it's basically doing version control in your head.
+
+With Dropbox, you hit "Save", as you normally would, and everything just works, even with large files.
+
+Business Model
+Freemium approach: free 1GB accounts, charge for additional storage (~$5/mo for 10GB for individuals, team plans starting at ~$20/mo). Small/medium businesses already pay for solutions that are subsets of what Dropbox does. Tiered pricing for business accounts, with an enterprise plan at higher price points.
+
+Also approached by potential partners asking for a web services API to programmatically create Dropboxes. Natural synergy between project management web apps and Dropbox for file sharing.
