@@ -1,0 +1,32 @@
+Company name: Not specified (API Bartender for LLM APIs)
+Category: AI / Developer Tools
+
+What is your company going to make?
+An API that combines different LLMs for quality and cost optimization. A machine learning model sorts tasks based on complexity and specialization, directing them to the best-performing LLM for that category. This allows companies to save costs since cheaper models can perform equally well in certain areas. Currently 35% cheaper than GPT-4 without sacrificing quality. Startups and SMEs use the service to save money and get better results.
+
+Founders
+Two founders, best friends since college, living and working together in Chicago. Andy is CEO handling design and frontend. Raymond is CTO handling full-stack with a focus on ML. Started the company in January, working full-time. Pivoted to current product after two previous YC submissions and two failed ideas.
+
+Progress
+Launched public beta on October 12. Already have paying customers and free trial users. Working on integrating Claude, PaLM, and fine-tuned models.
+
+Update October 27:
+Added user-requested features including organization management, usage tracking, and LangChain integration. Addressed GDPR compliance, terms of use, and privacy policy. Booked 23 demos and helped 3 companies with custom integration.
+
+17 free trial users since launch. 7 paying B2B customers integrating the API. Expected revenue of $500 to $1500 per user per month based on current AI usage costs.
+
+Current revenue: $1,968 plus approximately $100 unbilled usage. Customer 4 alone paying close to $1,800. Updated to usage-based pricing after user feedback.
+
+Why this idea?
+Encountered limitations with GPT-3.5 and high costs with GPT-4 in a previous project. The concept started as a cost-optimization solution for their own use before realizing its broader application. Spoke with over 100 founders in the generative AI space. On launch day alone, more than 20 demos were booked. One customer was saving $3,500 monthly on AI calls without sacrificing quality.
+
+Pivoted from an AI job search copilot. Key lessons learned: B2C faces high churn in recruiting, user feedback is critical to avoid building the wrong thing, and quick launches are essential for finding product-market fit.
+
+Competitors
+Competitors are companies offering single or fine-tuned LLMs. Those individual LLMs are incorporated into this product. As the cost, speed, and quality of individual LLMs improve, so does this product. No companies are working on a combined LLM approach right now.
+
+What others don't get?
+Outperforms competitors in both cost and output quality. As individual LLMs improve, the combined approach improves too, maintaining a permanent competitive edge. The combined LLM model is the future of LLM usage.
+
+Business Model
+Pay-by-usage API model. Profits are currently more than half of revenue. Initially targeting startups and SMBs using generative AI. AI market is approximately $200 billion. Current serviceable available market is $2.7 billion.

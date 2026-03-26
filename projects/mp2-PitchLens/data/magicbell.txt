@@ -1,0 +1,33 @@
+Company name: MagicBell
+Category: Developer Tools
+
+What is your company going to make?
+MagicBell is an out of the box notification system with multi-channel delivery. Notifications are created via API and the embeddable notification center can be fully customized to match any product's UI and UX. Companies with existing email notifications can bcc them to a project-specific email address to roll out MagicBell within 30 minutes. Think of it like a smart router for a company's notifications to its customers.
+
+MagicBell enables companies to think in terms of users and respect their notification preferences, instead of dealing with the complexity of different platform APIs across channels.
+
+Founders
+Solo founder. Hana, building with Josue as a core team member. Previously founded SupportBee, a shared inbox product with 500+ enterprise customers and 20,000 enterprise users. Operating from Barcelona as a Delaware C-corp. Applied to YC in 2012 with SupportBee but did not get in.
+
+Progress
+Stable MVP delivering over 1 million notifications per month for two B2B apps. Already deployed: core APIs for notifications and preference management, JavaScript-based in-app notification center with real-time updates, email source and delivery channel, open-source libraries for React and Ruby. Signing up one enterprise lead per week through blog content. Working on this for about 6 months, last month full-time.
+
+Active users: MagicBell powering notifications for SupportBee with 500+ enterprise customers and 20,000 enterprise users. Live on another B2B SaaS collaboration product on the free tier. Onboarding a Series A funded insurance marketplace in Europe contracted at $299/month. Revenue: $999 in August.
+
+Why this idea?
+Universal problem faced by all B2B apps, experienced personally at SupportBee. Before MagicBell, significant engineering time was spent figuring out whom to notify based on activity and preferences, delivering via email, and handling support tickets when notifications failed. When users asked for in-app and mobile push notifications, the complexity of avoiding duplicates across channels made it clear this needed a dedicated solution. Validated the problem with other companies at similar scale before deciding to build MagicBell.
+
+What's new?
+The only current substitute is building in-house. Based on experience and user interviews, it takes two engineers and a designer at least two months to build a basic real-time notification center with multi-channel delivery. Teams need to integrate APIs from Twilio, Pusher, and others. Analytics, debugging, UX tuning, and maintenance add even more work.
+
+What others don't get?
+Most companies have already invested in email notifications and are reluctant to switch to a new API. Underestimating this inertia is a mistake. MagicBell lets companies bcc their existing email notifications and embed the notification center without writing any API code. Setup takes under 30 minutes. Over time they migrate to the full API. This low-risk entry point dramatically reduces adoption friction.
+
+Competitors
+Twilio provides APIs for multi-channel notification delivery and could be considered indirect competition. Twilio participated in a Series A for a company solving the same problem with a different approach. Pusher and OneSignal could offer competing products in the future.
+
+Business Model
+Subscription fee based on number of channels, active user count, notification volume, and data retention period. Deep integration into customer codebases means low churn and strong expansion revenue expected at 150 to 200 percent year over year. Target average revenue per account of $4,000 per month. Projected $30 million per year in five years with the right growth capital.
+
+How will you get users?
+Blog content on notification system challenges brings one lead per week. Plan to publish more content to double down on organic acquisition. Additional channels include cold emails to targeted companies, a freemium model with MagicBell-branded widgets, and partnerships with channel API providers like email, text, and push services.

@@ -1,0 +1,50 @@
+Company name: Simula
+GitHub: https://github.com/SimulaVR/Simula
+
+What is your company going to make?
+Simula is the world's first VR Linux distro, runnable as a standalone OS on any Head-Mounted Display or VR/AR-equipped computer. Most people think the future of VR is in games and entertainment, but it is also in office work. VR is going to replace screens and laptops.
+
+The VR industry is too biased toward Windows. Nobody is thinking about how VR can be optimized for clear text resolution and having multiple 2D and 3D apps running simultaneously in a shared workspace.
+
+Simply plug in your headset, install Simula, and all your existing 2D and 3D Linux applications float in a shared workspace. Users get unlimited virtual screens of any size, crystal clear text resolution, and Linux. Ultimate goal is for manufacturers to run it as a standalone OS on their own headsets.
+
+Value for consumers: a distraction-free, immersive VR workspace that is 10x better than physical screens. Users can have 10x as many screens, each 10x cheaper than any physical alternative. A VR headset is 10x smaller than a multi-monitor setup and fits in a bag.
+
+Value for HMD manufacturers: a free and open-source VR OS they can modify and deploy without paying Microsoft licensing fees. Simula wants to be Android for VR.
+
+Progress
+Prototype working on HTC Vive. 6 alpha testers, 20 signups, 4 active developers working in monthly sprints. 17K lines of code. 205 GitHub stars, 20 watchers, 6 contributors, 9 forks. Immediate goal is to get one alpha tester using Simula for more than 1 hour per day.
+
+Currently incorporating Simula into the Godot open source game engine, which recently added OpenVR support, to fix low FPS and stutteriness in the current prototype.
+
+Why this idea?
+10x technology that could change how millions of people physically interact with computers. Highly contrarian. Founders are users of their own product, running multi-screen Linux rigs for years. Timing is right while big tech struggles to popularize VR as entertainment. VR is the killer app for work that the industry is missing.
+
+What's new?
+Old: laptops, dual monitors, oversized screens.
+New with Simula: 10x the screen real estate, 10x the immersion and focus, 10x less physical desk space. Anyone can have a workstation more impressive than a Wall Street trader.
+
+Competitors
+Biggest fear: bad timing and a VR Winter. VR failed to meet industry growth expectations in 2017.
+
+Microsoft Holographic provides a polished proprietary VR OS in the Windows ecosystem. BigScreen and other VR desktop startups are Windows-based. Magic Leap is building its own OS internally. Valve SteamVR could organically evolve into a VR desktop environment. Nobody is explicitly targeting Linux desktop users because it is only 1-2% of all PC desktops.
+
+What others don't get?
+Three contrarian beliefs:
+
+First, most people think VR is for games and entertainment, but it is also for office work. VR will replace screens and laptops.
+
+Second, most people think VR is about single-purpose 3D apps, but it is just as much about multi-purpose 2D apps. Simula lets 2D and 3D apps reside and communicate in a single shared workspace.
+
+Third, most people think VR should be optimized for terrain and video display, but it should also be optimized for clear text resolution. People must be able to read code and spreadsheets with full clarity for VR to be truly better than physical screens.
+
+Business Model
+Marketplace possibly token-based for 3D work applications, comparable to large app stores valued in excess of $10B.
+Dual licensing fees down the line.
+Search ads similar to how Canonical monetizes Ubuntu with affiliate links.
+Strategic acquisition by a larger company such as Canonical.
+
+How will you get users?
+0 to 10,000: target the overlooked intersection of VR enthusiasts and Linux enthusiasts. Value proposition is to plug in your Vive and multiply your screen real estate by 10.
+10,000 to 100,000: ensure the best 3D office applications are available on the platform while competitors focus on games.
+100,000 to 1,000,000+: distribute Simula pre-installed on VR and AR headsets.

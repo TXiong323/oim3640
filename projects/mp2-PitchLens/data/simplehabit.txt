@@ -1,0 +1,36 @@
+Company name: Simple Habit
+Category: Consumer / Health & Wellness
+
+What is your company going to make?
+Simple Habit is an iOS app that offers 5-minute meditations for life situations throughout the day. Meditations to reduce anxiety before a meeting, improve focus at work, and sleep better. Recorded by top meditation teachers from all over the world with over 100 teachers on the platform.
+
+Goal is to build the world's leading platform for mindfulness and meditation content, helping millions of people live more mindfully and build resilience.
+
+Unlike Headspace and Calm which offer a single channel, Simple Habit is a marketplace and platform for mindfulness content, offering a continuously updated stream from a variety of teachers. First to introduce a Spotify-like business model to meditation. Teachers are paid a portion of subscription revenue based on how many times their content is listened to.
+
+Founders
+Solo founder. Previously worked in investment banking after graduating from Duke in 2011, then founded Locket which was sold to Wish after raising $3M+. Currently at Stanford GSB.
+
+Progress
+Started the company in February 2016, launched iOS app in June 2016. In 3 months reached close to 100K downloads. 5% of signups convert to a paid subscription at $12 per month. Featured by Apple 5 times. Extensive media coverage. Android in development, expected November release. 8 months of work, approximately 40K lines of code across all platforms.
+
+85K signups since June 2016 launch. User growth rate was 95% last month. Received additional investment after launch as a convertible note.
+
+Why this idea?
+After selling Locket, became more stressed than ever. Tried massages, lavender pillows, silent retreats, and other meditation apps. Meditation worked best but existing apps were single teacher and personality based. Wanted to browse different types of teachers and teachings, with bite-sized sessions for busy professionals. Built Simple Habit to serve that need.
+
+Since launch, thousands of users suffering from stress, anxiety, and depression have shared how the app changed their lives.
+
+What's new?
+First meditation platform to curate content from hundreds of high-quality mindfulness professionals under a subscription model. Spotify-like business model is new to the meditation space. Silent retreats and in-person studios are alternatives but are not financially or temporally accessible to busy professionals.
+
+What others don't get?
+First, competitors do not understand meditation fatigue. Users tune out from the same voice and personality over time, just like music from only one band would lose its appeal. The effectiveness of meditation diminishes as users get accustomed to the same teacher's techniques and personality.
+
+Second, competitors do not understand that teachers can be a powerful user acquisition channel. Building a great experience for teachers, with the right financial incentives and tools, turns them into evangelists for Simple Habit.
+
+Business Model
+Subscription at $12 per month. 18 million people meditating in the US alone according to Forbes, growing every year. Meditation and mindfulness industry ranked nearly $1 billion in 2015. More than 22% of employers offer mindfulness training for their workforce. Longer term opportunity in mental health, stress relief, and health and wellness, which is a trillion dollar industry.
+
+How will you get users?
+Organic growth through App Store featuring and media coverage. Teacher network as an acquisition channel. Word of mouth from users who share their positive experiences. Expanding to Android in November to grow the addressable user base.

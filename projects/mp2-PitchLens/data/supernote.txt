@@ -1,0 +1,41 @@
+Company name: Supernote
+Category: Developer Tools
+
+What is your company going to make?
+Supernote is a notebook management tool for Data Scientists and ML Engineers. A lot of features exist in disparate open source software but there is no single tool a Data Scientist can use to manage their whole workflow. Supernote bundles all these tools together into something people will pay for.
+
+The most common DS workflow today is training a model on local Jupyter notebooks or Google Colab, testing it with example arguments, then uploading it to GCP or AWS to deploy. There is no good collaboration solution so people share screenshots in Slack. Technically savvy engineers use git for versioning but most do not.
+
+Founders
+Two founders. Met in college working in the AI and Vision lab, became best friends, and have been roommates in SF for the last couple years. Known each other for almost 4 years.
+
+Previously shipped a consumer subscription app in December 2020, learned iOS development, designed and launched v1 in one week, ran a TikTok ad campaign, reached $8K MRR in mid-February before deciding to pursue something bigger.
+
+Progress
+Came up with the idea about 2 weeks ago. Done 15 user interviews. MVP on track to ship by March 26. 3 pre-sales at $50 each for lifetime access, totaling $150 in revenue to validate the idea.
+
+Akshay full-time for 2 weeks. Shri working nights and weekends for 2 weeks, full-time for 2 days.
+
+Why this idea?
+During YC build sprint, talked to 27 people at smaller companies and non-tech F500s about workflow problems. Among those, 4 Data Scientists at startups mentioned they could be managing their notebooks much better. Shri works in Python notebooks at Facebook and knew they had good internal solutions. Akshay built data infrastructure for Uber's marketplace experimentation team.
+
+Pitched Supernote to those 4 DSs, they liked it, did 11 more interviews, asked people to prepay $50 for lifetime access and 3 out of 15 agreed. Decided it was worth building.
+
+Domain expertise: Shri is a power user of Bento notebooks and ANP at Facebook. Akshay did extensive data work at Uber and knows how to build the backend.
+
+What's new?
+Most features exist in open source tools but no single product bundles them for DS workflow management. Individual features solve annoying problems but are not big enough for people to pay for on their own. Together as Supernote they cross the threshold to something worth paying for.
+
+Competitors
+No real competitors right now except Deepnote (YC S19) and Naas. Not concerned about them. In the future, Databricks, Domino Data Lab, AWS, Azure, and GCP could all become competitors. Biggest fear is Databricks changing their notebook product to match Supernote since they own so much of a company's data infrastructure.
+
+What others don't get?
+Most people in the space overlook how underserved DS tooling is. If you capture the DS notebook, the home base of every Data Scientist and ML Engineer, you can easily expand into other parts of the data and ML pipeline. There is a ton of focus on DevTools for developers but not much for pseudo-devs like Data Scientists. That is a big opportunity.
+
+Business Model
+SaaS subscription at $20 to $50 per user per month, plus usage-based pricing for notebooks deployed as APIs.
+
+Market sizing at $25 per user per month: 2.6M Data Engineers, 350K ML Engineers, and 400K Data Scientists in the US alone, all using Jupyter Notebooks daily. Notebooks product alone represents a $1.05B per year opportunity. Longer term, can sell an end-to-end data platform to the same customers, which is a much larger market.
+
+How will you get users?
+Initially through direct sales and marketing. Medium to longer term, a free tier for students and individuals will drive organic and word-of-mouth growth, similar to Qualtrics and Benchling's early go-to-market strategy.
