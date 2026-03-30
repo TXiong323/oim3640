@@ -1,8 +1,9 @@
 import os
 import string
+import matplotlib.pyplot as plt
 
 # --------------------------------------------------------
-# STOP WORDS - common words we want to ignore
+# STOP WORDS
 # --------------------------------------------------------
 STOP_WORDS = {
     "a", "an", "the", "and", "or", "but", "in", "on", "at", "to",
@@ -17,14 +18,29 @@ STOP_WORDS = {
 }
 
 # --------------------------------------------------------
-# Build data folder path relative to this script's location
+# CONFIDENCE vs HEDGING word lists
+# --------------------------------------------------------
+CONFIDENT_WORDS = {
+    "will", "built", "launched", "proven", "achieved", "delivered",
+    "demonstrated", "completed", "secured", "established", "committed",
+    "growing", "winning", "leading", "generated", "raised", "closed"
+}
+
+HEDGING_WORDS = {
+    "might", "maybe", "perhaps", "hope", "trying", "possibly",
+    "potentially", "likely", "uncertain", "unclear", "attempt",
+    "consider", "believe", "think", "expect", "planning", "intend"
+}
+
+# --------------------------------------------------------
+# Build data folder path relative to this script
 # --------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FOLDER = os.path.join(SCRIPT_DIR, "data")
 
 
 # --------------------------------------------------------
-# STEP 1: Load text from a .txt file
+# STEP 1: Load text
 # --------------------------------------------------------
 def load_text(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
@@ -32,7 +48,7 @@ def load_text(filepath):
 
 
 # --------------------------------------------------------
-# STEP 2: Clean the text
+# STEP 2: Clean text
 # --------------------------------------------------------
 def clean_text(text):
     text = text.lower()
@@ -41,7 +57,7 @@ def clean_text(text):
 
 
 # --------------------------------------------------------
-# STEP 3: Count word frequencies
+# STEP 3: Count word frequencies (excluding stop words)
 # --------------------------------------------------------
 def count_words(text):
     words = text.split()
@@ -53,7 +69,7 @@ def count_words(text):
 
 
 # --------------------------------------------------------
-# STEP 4: Get top N words
+# STEP 4: Top N words
 # --------------------------------------------------------
 def top_n_words(frequency, n=10):
     sorted_words = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
@@ -61,7 +77,7 @@ def top_n_words(frequency, n=10):
 
 
 # --------------------------------------------------------
-# STEP 5: Print stats for one essay
+# STEP 5: Basic stats
 # --------------------------------------------------------
 def print_stats(filename, raw_text, frequency):
     total_words = len(raw_text.split())
@@ -80,30 +96,121 @@ def print_stats(filename, raw_text, frequency):
 
 
 # --------------------------------------------------------
-# MAIN - Run analysis on all essays in data/
+# QUESTION 1: Vocabulary richness (unique / total words)
+# --------------------------------------------------------
+def vocabulary_richness(raw_text, frequency):
+    total_words = len(raw_text.split())
+    unique_words = len(frequency)
+    return round(unique_words / total_words, 3)
+
+
+def print_vocabulary_ranking(results):
+    print("\n========================================")
+    print("   Q1: Vocabulary Richness Ranking")
+    print("   (unique words / total words)")
+    print("========================================")
+    ranked = sorted(results, key=lambda x: x["richness"], reverse=True)
+    for i, r in enumerate(ranked, 1):
+        name = r["name"].replace(".txt", "")
+        print(f"  {i:2}. {name:<20} {r['richness']}")
+
+
+# --------------------------------------------------------
+# QUESTION 2: Confidence score (confident - hedging words)
+# --------------------------------------------------------
+def confidence_score(raw_text):
+    words = raw_text.lower().split()
+    confident_count = sum(1 for w in words if w in CONFIDENT_WORDS)
+    hedging_count = sum(1 for w in words if w in HEDGING_WORDS)
+    score = confident_count - hedging_count
+    return confident_count, hedging_count, score
+
+
+def print_confidence_ranking(results):
+    print("\n========================================")
+    print("   Q2: Confidence vs Hedging Language")
+    print("   (confident words - hedging words)")
+    print("========================================")
+    print(f"  {'Essay':<22} {'Confident':>10} {'Hedging':>8} {'Score':>7}")
+    print("  " + "-" * 50)
+    ranked = sorted(results, key=lambda x: x["conf_score"], reverse=True)
+    for r in ranked:
+        name = r["name"].replace(".txt", "")
+        print(f"  {name:<22} {r['conf_count']:>10} {r['hedge_count']:>8} {r['conf_score']:>7}")
+
+
+# --------------------------------------------------------
+# VISUALIZATION: Bar chart of vocabulary richness
+# --------------------------------------------------------
+def plot_vocabulary_richness(results):
+    ranked = sorted(results, key=lambda x: x["richness"], reverse=True)
+    names = [r["name"].replace(".txt", "") for r in ranked]
+    scores = [r["richness"] for r in ranked]
+
+    plt.figure(figsize=(12, 6))
+    bars = plt.bar(names, scores, color="steelblue", edgecolor="white")
+
+    # Add value labels on top of each bar
+    for bar, score in zip(bars, scores):
+        plt.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.003,
+            str(score),
+            ha="center", va="bottom", fontsize=9
+        )
+
+    plt.title("PitchLens: Vocabulary Richness by Essay", fontsize=14, fontweight="bold")
+    plt.xlabel("Startup Essay", fontsize=11)
+    plt.ylabel("Richness Score (unique / total words)", fontsize=11)
+    plt.xticks(rotation=30, ha="right")
+    plt.tight_layout()
+    plt.savefig(os.path.join(SCRIPT_DIR, "vocabulary_richness.png"), dpi=150)
+    plt.show()
+    print("\n  Chart saved as vocabulary_richness.png")
+
+
+# --------------------------------------------------------
+# MAIN
 # --------------------------------------------------------
 def main():
     print("\n========================================")
     print("       PitchLens - Text Analysis        ")
     print("========================================\n")
 
-    # Check if data folder exists
     if not os.path.exists(DATA_FOLDER):
         print(f"ERROR: Could not find data folder at: {DATA_FOLDER}")
         return
 
-    files_found = 0
+    results = []
+
     for filename in sorted(os.listdir(DATA_FOLDER)):
         if filename.endswith(".txt"):
-            files_found += 1
             filepath = os.path.join(DATA_FOLDER, filename)
             raw_text = load_text(filepath)
             cleaned = clean_text(raw_text)
             frequency = count_words(cleaned)
+
+            # Milestone 1: basic stats
             print_stats(filename, raw_text, frequency)
 
-    if files_found == 0:
-        print("No .txt files found in the data/ folder.")
+            # Collect data for Milestone 2 questions
+            richness = vocabulary_richness(raw_text, frequency)
+            conf_count, hedge_count, conf_score = confidence_score(raw_text)
+
+            results.append({
+                "name": filename,
+                "richness": richness,
+                "conf_count": conf_count,
+                "hedge_count": hedge_count,
+                "conf_score": conf_score,
+            })
+
+    # Milestone 2: answer interesting questions
+    print_vocabulary_ranking(results)
+    print_confidence_ranking(results)
+
+    # Milestone 2: visualization
+    plot_vocabulary_richness(results)
 
 
 if __name__ == "__main__":
