@@ -140,7 +140,7 @@ def print_confidence_ranking(results):
 
 
 # --------------------------------------------------------
-# VISUALIZATION: Bar chart of vocabulary richness
+# CHART 1: Vocabulary richness bar chart
 # --------------------------------------------------------
 def plot_vocabulary_richness(results):
     ranked = sorted(results, key=lambda x: x["richness"], reverse=True)
@@ -150,7 +150,6 @@ def plot_vocabulary_richness(results):
     plt.figure(figsize=(12, 6))
     bars = plt.bar(names, scores, color="steelblue", edgecolor="white")
 
-    # Add value labels on top of each bar
     for bar, score in zip(bars, scores):
         plt.text(
             bar.get_x() + bar.get_width() / 2,
@@ -166,7 +165,46 @@ def plot_vocabulary_richness(results):
     plt.tight_layout()
     plt.savefig(os.path.join(SCRIPT_DIR, "vocabulary_richness.png"), dpi=150)
     plt.show()
-    print("\n  Chart saved as vocabulary_richness.png")
+    print("  Chart 1 saved as vocabulary_richness.png")
+
+
+# --------------------------------------------------------
+# CHART 2: Confidence vs Hedging grouped bar chart
+# --------------------------------------------------------
+def plot_confidence_scores(results):
+    ranked = sorted(results, key=lambda x: x["conf_score"], reverse=True)
+    names = [r["name"].replace(".txt", "") for r in ranked]
+    confident = [r["conf_count"] for r in ranked]
+    hedging = [r["hedge_count"] for r in ranked]
+
+    x = range(len(names))
+    width = 0.35
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    bars1 = ax.bar([i - width / 2 for i in x], confident, width,
+                   label="Confident words", color="seagreen", edgecolor="white")
+    bars2 = ax.bar([i + width / 2 for i in x], hedging, width,
+                   label="Hedging words", color="tomato", edgecolor="white")
+
+    # Value labels
+    for bar in bars1:
+        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.1,
+                str(int(bar.get_height())), ha="center", va="bottom", fontsize=9)
+    for bar in bars2:
+        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.1,
+                str(int(bar.get_height())), ha="center", va="bottom", fontsize=9)
+
+    ax.set_title("PitchLens: Confident vs Hedging Language by Essay",
+                 fontsize=14, fontweight="bold")
+    ax.set_xlabel("Startup Essay", fontsize=11)
+    ax.set_ylabel("Word Count", fontsize=11)
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(names, rotation=30, ha="right")
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(os.path.join(SCRIPT_DIR, "confidence_scores.png"), dpi=150)
+    plt.show()
+    print("  Chart 2 saved as confidence_scores.png")
 
 
 # --------------------------------------------------------
@@ -190,10 +228,8 @@ def main():
             cleaned = clean_text(raw_text)
             frequency = count_words(cleaned)
 
-            # Milestone 1: basic stats
             print_stats(filename, raw_text, frequency)
 
-            # Collect data for Milestone 2 questions
             richness = vocabulary_richness(raw_text, frequency)
             conf_count, hedge_count, conf_score = confidence_score(raw_text)
 
@@ -205,12 +241,14 @@ def main():
                 "conf_score": conf_score,
             })
 
-    # Milestone 2: answer interesting questions
     print_vocabulary_ranking(results)
     print_confidence_ranking(results)
 
-    # Milestone 2: visualization
+    print("\n========================================")
+    print("   Generating Charts...")
+    print("========================================")
     plot_vocabulary_richness(results)
+    plot_confidence_scores(results)
 
 
 if __name__ == "__main__":
