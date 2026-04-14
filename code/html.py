@@ -1,0 +1,13 @@
+<!doctype html> 
+<html lang = "en">
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <title>Hello, {{ name }}!</title>
+    </head>
+    </html>
+    <body>
+        <h1 style='color: red;'>Hello, {{ name }}!</h1> 
+        <p>Welcome to Flask development.</p >"
+    </body>
+</.html>
