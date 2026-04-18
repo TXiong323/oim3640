@@ -8,8 +8,7 @@ See [`proposal.md`](proposal.md) for goals, MVP scope, and stretch goals.
 
 ## Status
 
-**Phase 3a complete** — GitHub Trending added as second source  
-Phase 3b — arXiv cs.AI RSS  
+**Phase 3b complete** — arXiv cs.AI + cs.CL added as third source  
 Phase 3c — Anthropic / OpenAI blog RSS  
 Phase 3d — Product Hunt  
 Phase 4 — GitHub Actions cron
@@ -31,10 +30,12 @@ python main.py
 | `RECIPIENT_EMAIL` | Where to deliver the digest |
 | `DEEPSEEK_API_KEY` | DeepSeek API key from [platform.deepseek.com](https://platform.deepseek.com) |
 
-## How it works (Phase 3a)
+## How it works (Phase 3b)
 
 1. **Hacker News** — Algolia API, last 24h, ≥ 30 pts, AI keyword filter
 2. **GitHub Trending** — scrapes daily + weekly trending, filters by AI keywords in name/description; falls back to all trending if < 5 match
-3. All candidates merged and passed to **DeepSeek** (`deepseek-chat`) via OpenAI-compatible API
-4. DeepSeek picks 5–7 items that are productivity-relevant (new tools, releases, fast-rising repos, tutorials) and discards noise
-5. Each pick gets a ≤25-word `why_it_matters` note; email shows source label and appropriate metadata (HN pts / GitHub stars)
+3. **arXiv** — parses `cs.AI` and `cs.CL` RSS feeds, keyword-filters to ≤ 20 practitioner-relevant papers (agents, tools, reasoning, RAG, etc.)
+4. All candidates merged (~45 total) and passed to **DeepSeek** (`deepseek-chat`) via OpenAI-compatible API
+5. DeepSeek picks 5–7 items across all three sources; discards noise (pricing, politics, pure theory, games/entertainment)
+6. Each pick gets a ≤40-char Chinese `why_it_matters` note (technical terms stay in English)
+7. Email shows source label + appropriate metadata per source (HN: pts/comments; GitHub: stars; arXiv: authors/category)

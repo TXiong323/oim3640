@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from datetime import date
-from sources import hackernews, github_trending
+from sources import hackernews, github_trending, arxiv
 import analyzer
 import email_sender
 
@@ -16,7 +16,11 @@ def main():
     gh_items = github_trending.fetch()
     print(f"  {len(gh_items)} candidates")
 
-    candidates = hn_items + gh_items
+    print("Fetching arXiv...")
+    arxiv_items = arxiv.fetch()
+    print(f"  {len(arxiv_items)} candidates")
+
+    candidates = hn_items + gh_items + arxiv_items
     print(f"Total candidates: {len(candidates)}")
 
     print("Analyzing with DeepSeek...")

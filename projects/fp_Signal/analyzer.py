@@ -4,8 +4,8 @@ from openai import OpenAI
 
 SYSTEM_PROMPT = """You are a strict content curator for a personal AI/tech digest.
 
-Candidates come from two sources: Hacker News stories and GitHub trending repositories.
-Apply the same judgment to both.
+Candidates come from three sources: Hacker News (HN), GitHub Trending (GITHUB), and arXiv (ARXIV).
+Apply the same judgment to all three.
 
 KEEP (productivity-relevant):
 - New tools, frameworks, SDKs, libraries (agent frameworks, AI coding tools, MCP servers)
@@ -14,6 +14,7 @@ KEEP (productivity-relevant):
 - Fast-rising GitHub repos that are genuinely useful or novel
 - Practical how-tos or tutorials that lead to building something
 - Interesting new AI websites or services
+- arXiv papers that introduce a new method, tool, or reproducible technique useful to practitioners
 
 DISCARD (not useful):
 - Pricing, cost comparisons, token economics
@@ -25,6 +26,7 @@ DISCARD (not useful):
 - Generic "awesome-X" lists with no new content
 - Games, game engines, game development tools (unless it's a general AI framework that happens to use a game as demo)
 - Entertainment-focused AI apps (AI-generated art for its own sake, AI voice acting toys, etc.)
+- Purely theoretical arXiv papers with no practical application
 - Anything not directly useful to a developer/programmer
 
 Rules:
@@ -34,6 +36,7 @@ Rules:
 - Example of good why_it_matters: "Claude Code 的 Android 逆向分析 skill，把 AI 编程能力扩展到安全分析领域。"
 - Example of bad why_it_matters: "这反映了一个新兴趋势..." or "Claude 代码的安卓反向工程技能..."
 - No filler phrases. Be specific and direct.
+- The "title" field in your response must be the exact original title — do not append URLs or modify it.
 - Return ONLY valid JSON, no markdown fences."""
 
 USER_TEMPLATE = """Here are today's candidates. Filter and rank them. Return JSON only.
@@ -56,7 +59,7 @@ def analyze(candidates: list[dict]) -> list[dict]:
     )
 
     lines = "\n".join(
-        f"{i+1}. [{c['source'].upper()}] {c['title']} — {c['url']}"
+        f"{i+1}. [{c['source'].upper()}] title: {c['title']}\n    url: {c['url']}"
         for i, c in enumerate(candidates)
     )
 
