@@ -3,7 +3,7 @@ load_dotenv()
 
 import sys
 from datetime import date, timedelta
-from sources import hackernews, github_trending, blogs, youtube
+from sources import hackernews, github_trending, blogs, youtube, producthunt
 import analyzer
 import email_sender
 
@@ -22,6 +22,10 @@ def main():
     hn_items = hackernews.fetch(hours_back=hours_back)
     print(f"  {len(hn_items)} candidates")
 
+    print("Fetching Show HN...")
+    show_hn_items = hackernews.fetch_show_hn(hours_back=hours_back)
+    print(f"  {len(show_hn_items)} candidates")
+
     print("Fetching GitHub Trending...")
     gh_items = github_trending.fetch()
     print(f"  {len(gh_items)} candidates")
@@ -34,7 +38,15 @@ def main():
     yt_items = youtube.fetch(hours_back=hours_back)
     print(f"  {len(yt_items)} candidates")
 
-    candidates = hn_items + gh_items + blog_items + yt_items
+    print("Fetching Product Hunt...")
+    try:
+        ph_items = producthunt.fetch(hours_back=hours_back)
+        print(f"  {len(ph_items)} candidates")
+    except Exception as e:
+        print(f"  Product Hunt failed: {e}")
+        ph_items = []
+
+    candidates = hn_items + show_hn_items + gh_items + blog_items + yt_items + ph_items
     print(f"Total candidates: {len(candidates)}")
 
     print("Analyzing with DeepSeek...")

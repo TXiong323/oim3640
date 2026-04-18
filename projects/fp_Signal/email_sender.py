@@ -6,17 +6,20 @@ from datetime import date
 
 SOURCE_LABEL = {
     "hn": "Hacker News",
+    "show_hn": "Show HN",
     "github": "GitHub Trending",
     "anthropic": "Anthropic blog",
     "openai": "OpenAI blog",
     "youtube": "YouTube",
+    "producthunt": "Product Hunt",
 }
 
-# Weekly grouping
+# Weekly grouping order
 _GROUPS = [
-    ("📺 YouTube 视频",    lambda s: s["source"] == "youtube"),
-    ("🐙 GitHub 项目",    lambda s: s["source"] == "github"),
-    ("📰 文章 / 博客",     lambda s: s["source"] in ("hn", "anthropic", "openai")),
+    ("📺 YouTube 视频",  lambda s: s["source"] == "youtube"),
+    ("🚀 Product Hunt 新品", lambda s: s["source"] == "producthunt"),
+    ("🐙 GitHub 项目",   lambda s: s["source"] == "github"),
+    ("📰 文章 / 博客",    lambda s: s["source"] in ("hn", "show_hn", "anthropic", "openai")),
 ]
 
 
@@ -25,7 +28,7 @@ def _meta_line(story: dict) -> str:
     meta = story.get("metadata", {})
     label = SOURCE_LABEL.get(source, source)
 
-    if source == "hn":
+    if source in ("hn", "show_hn"):
         pts = meta.get("points", 0)
         comments = meta.get("comments", 0)
         hn_url = meta.get("hn_url", story["url"])
@@ -33,6 +36,9 @@ def _meta_line(story: dict) -> str:
             f'{pts} pts &middot; {comments} comments &middot; '
             f'<a href="{hn_url}" style="color:#aaa;">discuss</a> &middot; {label}'
         )
+    elif source == "producthunt":
+        votes = meta.get("votes", 0)
+        return f'{votes} votes &middot; {label}'
     elif source == "github":
         lang = meta.get("language", "")
         stars_today = meta.get("stars_today", 0)
