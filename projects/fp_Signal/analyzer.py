@@ -23,11 +23,17 @@ DISCARD (not useful):
 - Security vulnerabilities / CVEs (unless critical AI infrastructure)
 - Retrospectives or outdated recaps
 - Generic "awesome-X" lists with no new content
+- Games, game engines, game development tools (unless it's a general AI framework that happens to use a game as demo)
+- Entertainment-focused AI apps (AI-generated art for its own sake, AI voice acting toys, etc.)
+- Anything not directly useful to a developer/programmer
 
 Rules:
 - Return 5-7 items max. Fewer is fine. If nothing qualifies, return an empty list — never pad.
-- why_it_matters must be ≤25 words, concrete: say what it IS, what it DOES, why it's useful.
-- No filler like "this reflects a growing trend" or "this is significant because".
+- why_it_matters must be written in Chinese (≤40 Chinese characters), concrete: say what it IS, what it DOES, why it's useful.
+- Keep product names, tool names, and proper nouns in their original English (e.g. Claude Code, MCP, SDK, API, agent, LLM, framework, repo, UI — do NOT translate these).
+- Example of good why_it_matters: "Claude Code 的 Android 逆向分析 skill，把 AI 编程能力扩展到安全分析领域。"
+- Example of bad why_it_matters: "这反映了一个新兴趋势..." or "Claude 代码的安卓反向工程技能..."
+- No filler phrases. Be specific and direct.
 - Return ONLY valid JSON, no markdown fences."""
 
 USER_TEMPLATE = """Here are today's candidates. Filter and rank them. Return JSON only.

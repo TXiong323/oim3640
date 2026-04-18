@@ -21,7 +21,7 @@ def _meta_line(story: dict) -> str:
         hn_url = meta.get("hn_url", story["url"])
         return (
             f'{pts} pts &middot; {comments} comments &middot; '
-            f'<a href="{hn_url}" style="color:#aaa;">discuss</a> &middot; {label}'
+            f'<a href="{hn_url}" style="color:#aaa;">讨论</a> &middot; {label}'
         )
     elif source == "github":
         lang = meta.get("language", "")
@@ -29,9 +29,9 @@ def _meta_line(story: dict) -> str:
         stars_total = meta.get("stars_total", 0)
         parts = []
         if stars_today:
-            parts.append(f"+{stars_today:,} stars today")
+            parts.append(f"+{stars_today:,} 今日 stars")
         if stars_total:
-            parts.append(f"{stars_total:,} total")
+            parts.append(f"{stars_total:,} 累计")
         if lang:
             parts.append(lang)
         parts.append(label)
@@ -70,7 +70,7 @@ def build_html(stories: list[dict], candidate_count: int = 0) -> str:
 
         body = f"""
   <p style="color:#888;font-size:12px;">
-    {len(stories)} picks from {candidate_count} candidates &middot; HN + GitHub Trending &middot; last 24h
+    从 {candidate_count} 条候选中精选 {len(stories)} 条 &middot; HN + GitHub Trending &middot; 近 24 小时
   </p>
   <table width="100%" cellpadding="0" cellspacing="0">
     {rows}
