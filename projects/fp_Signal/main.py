@@ -2,32 +2,39 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from datetime import date
-from sources import hackernews
+from sources import hackernews, github_trending
 import analyzer
 import email_sender
 
 
 def main():
     print("Fetching Hacker News...")
-    candidates = hackernews.fetch()
-    print(f"  {len(candidates)} AI-related candidates")
+    hn_items = hackernews.fetch()
+    print(f"  {len(hn_items)} candidates")
+
+    print("Fetching GitHub Trending...")
+    gh_items = github_trending.fetch()
+    print(f"  {len(gh_items)} candidates")
+
+    candidates = hn_items + gh_items
+    print(f"Total candidates: {len(candidates)}")
 
     print("Analyzing with DeepSeek...")
     picks = analyzer.analyze(candidates)
     print(f"  {len(picks)} picks after filtering")
 
-    # Merge DeepSeek picks with HN metadata (points, comments, hn_url)
-    hn_index = {s["url"]: s for s in candidates}
+    # Build index for metadata lookup by URL
+    meta_index = {c["url"]: c for c in candidates}
+
     stories = []
     for pick in picks:
-        meta = hn_index.get(pick["url"], {})
+        c = meta_index.get(pick["url"], {})
         stories.append({
+            "source": c.get("source", ""),
             "title": pick["title"],
             "url": pick["url"],
             "why_it_matters": pick.get("why_it_matters", ""),
-            "points": meta.get("points", 0),
-            "comments": meta.get("comments", 0),
-            "hn_url": meta.get("hn_url", pick["url"]),
+            "metadata": c.get("metadata", {}),
         })
 
     subject = f"Signal: AI/Tech Digest — {date.today().strftime('%b %d, %Y')}"

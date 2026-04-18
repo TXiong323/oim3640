@@ -4,7 +4,6 @@ import requests
 
 API_URL = "https://hn.algolia.com/api/v1/search_by_date"
 
-# Short/ambiguous keywords use word-boundary matching; longer phrases use substring.
 _WORD_BOUNDARY_KEYWORDS = [
     "ai", "llm", "gpt", "rag", "mcp", "llama",
 ]
@@ -46,14 +45,17 @@ def fetch() -> list[dict]:
         title = h.get("title", "")
         if not _is_ai_related(title):
             continue
+        hn_id = h["objectID"]
         stories.append({
+            "source": "hn",
             "title": title,
-            "url": h.get("url") or f"https://news.ycombinator.com/item?id={h['objectID']}",
-            "points": h.get("points", 0),
-            "comments": h.get("num_comments", 0),
-            "hn_url": f"https://news.ycombinator.com/item?id={h['objectID']}",
-            "source": "Hacker News",
+            "url": h.get("url") or f"https://news.ycombinator.com/item?id={hn_id}",
+            "metadata": {
+                "points": h.get("points", 0),
+                "comments": h.get("num_comments", 0),
+                "hn_url": f"https://news.ycombinator.com/item?id={hn_id}",
+            },
         })
 
-    stories.sort(key=lambda s: s["points"], reverse=True)
+    stories.sort(key=lambda s: s["metadata"]["points"], reverse=True)
     return stories

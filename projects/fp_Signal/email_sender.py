@@ -4,6 +4,40 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import date
 
+SOURCE_LABEL = {
+    "hn": "Hacker News",
+    "github": "GitHub Trending",
+}
+
+
+def _meta_line(story: dict) -> str:
+    source = story.get("source", "")
+    meta = story.get("metadata", {})
+    label = SOURCE_LABEL.get(source, source)
+
+    if source == "hn":
+        pts = meta.get("points", 0)
+        comments = meta.get("comments", 0)
+        hn_url = meta.get("hn_url", story["url"])
+        return (
+            f'{pts} pts &middot; {comments} comments &middot; '
+            f'<a href="{hn_url}" style="color:#aaa;">discuss</a> &middot; {label}'
+        )
+    elif source == "github":
+        lang = meta.get("language", "")
+        stars_today = meta.get("stars_today", 0)
+        stars_total = meta.get("stars_total", 0)
+        parts = []
+        if stars_today:
+            parts.append(f"+{stars_today:,} stars today")
+        if stars_total:
+            parts.append(f"{stars_total:,} total")
+        if lang:
+            parts.append(lang)
+        parts.append(label)
+        return " &middot; ".join(parts)
+    return label
+
 
 def build_html(stories: list[dict], candidate_count: int = 0) -> str:
     today = date.today().strftime("%B %d, %Y")
@@ -21,13 +55,7 @@ def build_html(stories: list[dict], candidate_count: int = 0) -> str:
                 f'<br><em style="font-size:12px;color:#888;">{why}</em>'
                 if why else ""
             )
-            hn_meta = ""
-            if s.get("points"):
-                hn_meta = f"""
-                <br><span style="font-size:12px;color:#aaa;">
-                  {s['points']} pts &middot; {s.get('comments', 0)} comments &middot;
-                  <a href="{s['hn_url']}" style="color:#aaa;">discuss</a>
-                </span>"""
+            meta_html = _meta_line(s)
             rows += f"""
         <tr>
           <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
@@ -36,12 +64,13 @@ def build_html(stories: list[dict], candidate_count: int = 0) -> str:
               {s['title']}
             </a>
             {why_html}
-            {hn_meta}
+            <br><span style="font-size:12px;color:#aaa;">{meta_html}</span>
           </td>
         </tr>"""
+
         body = f"""
   <p style="color:#888;font-size:12px;">
-    {len(stories)} picks from {candidate_count} candidates &middot; Hacker News last 24h
+    {len(stories)} picks from {candidate_count} candidates &middot; HN + GitHub Trending &middot; last 24h
   </p>
   <table width="100%" cellpadding="0" cellspacing="0">
     {rows}
