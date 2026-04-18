@@ -11,13 +11,37 @@ See [`proposal.md`](proposal.md) for goals, MVP scope, and stretch goals.
 **Phase 3 complete** — all sources added (HN, Show HN, GitHub, Blogs, YouTube, Product Hunt)  
 Phase 4 — GitHub Actions cron
 
-## Setup
+## Local development
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env   # fill in real values
-python main.py
+cp .env.example .env   # fill in real values (see table below)
+python main.py          # daily digest (default)
+python main.py daily    # explicit daily
+python main.py weekly   # weekly digest
 ```
+
+## Automated runs via GitHub Actions
+
+Two workflows run on a schedule:
+
+| Workflow | Schedule | Command |
+|---|---|---|
+| `daily.yml` | Every day at 7:00 AM ET (11:00 UTC) | `python main.py daily` |
+| `weekly.yml` | Every Sunday at 9:00 AM ET (13:00 UTC) | `python main.py weekly` |
+
+Both support **manual trigger** via `workflow_dispatch` (Actions tab → select workflow → Run workflow).
+
+**Required repo secrets** (Settings → Secrets and variables → Actions):
+
+| Secret | Value |
+|---|---|
+| `GMAIL_ADDRESS` | Your Gmail address |
+| `GMAIL_APP_PASSWORD` | Gmail App Password |
+| `RECIPIENT_EMAIL` | Delivery address |
+| `DEEPSEEK_API_KEY` | DeepSeek API key |
+| `PRODUCTHUNT_CLIENT_ID` | Product Hunt OAuth client ID |
+| `PRODUCTHUNT_CLIENT_SECRET` | Product Hunt OAuth client secret |
 
 ## Environment variables
 

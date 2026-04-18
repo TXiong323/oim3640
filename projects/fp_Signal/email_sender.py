@@ -87,18 +87,45 @@ def _story_row(i: int, s: dict) -> str:
         </tr>"""
 
 
-def _daily_body(stories: list[dict], candidate_count: int) -> str:
+# Display name for each source in the summary line
+_SOURCE_DISPLAY = {
+    "hn": "HN",
+    "show_hn": "Show HN",
+    "github": "GitHub",
+    "anthropic": "Blogs",
+    "openai": "Blogs",
+    "youtube": "YouTube",
+    "producthunt": "Product Hunt",
+}
+# Deduplicated order for summary line
+_SOURCE_ORDER = ["hn", "show_hn", "youtube", "producthunt", "github", "anthropic", "openai"]
+
+
+def _sources_label(active_sources: set[str]) -> str:
+    seen: set[str] = set()
+    parts = []
+    for src in _SOURCE_ORDER:
+        if src in active_sources:
+            label = _SOURCE_DISPLAY[src]
+            if label not in seen:
+                seen.add(label)
+                parts.append(label)
+    return " + ".join(parts) if parts else "multiple sources"
+
+
+def _daily_body(stories: list[dict], candidate_count: int, active_sources: set[str]) -> str:
     if not stories:
         return '<p style="color:#555;font-size:15px;padding:20px 0;">Nothing worth reading today. Check back tomorrow.</p>'
     rows = "".join(_story_row(i, s) for i, s in enumerate(stories, 1))
+    src_label = _sources_label(active_sources)
     return f"""
   <p style="color:#888;font-size:12px;">
-    {len(stories)} picks from {candidate_count} candidates &middot; HN + GitHub + YouTube + Blogs &middot; last 24h
+    {len(stories)} picks from {candidate_count} candidates &middot; {src_label} &middot; last 24h
   </p>
   <table width="100%" cellpadding="0" cellspacing="0">{rows}</table>"""
 
 
-def _weekly_body(stories: list[dict], candidate_count: int, summary: str) -> str:
+def _weekly_body(stories: list[dict], candidate_count: int, summary: str, active_sources: set[str]) -> str:
     if not stories:
         return '<p style="color:#555;font-size:15px;padding:20px 0;">Nothing worth reading this week.</p>'
 
@@ -121,9 +148,10 @@ def _weekly_body(stories: list[dict], candidate_count: int, summary: str) -> str
   <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">{group_title}（{len(group_stories)} 个）</h3>
   <table width="100%" cellpadding="0" cellspacing="0">{rows}</table>"""
 
+    src_label = _sources_label(active_sources)
     return f"""
   <p style="color:#888;font-size:12px;">
-    {len(stories)} picks from {candidate_count} candidates &middot; HN + GitHub + YouTube + Blogs &middot; last 7d
+    {len(stories)} picks from {candidate_count} candidates &middot; {src_label} &middot; last 7d
   </p>
   {summary_html}
   {group_html}"""
@@ -134,13 +162,16 @@ def build_html(
     candidate_count: int = 0,
     mode: str = "daily",
     summary: str = "",
+    active_sources: set[str] | None = None,
 ) -> str:
+    if active_sources is None:
+        active_sources = set()
     today = date.today().strftime("%B %d, %Y")
 
     if mode == "weekly":
-        body = _weekly_body(stories, candidate_count, summary)
+        body = _weekly_body(stories, candidate_count, summary, active_sources)
     else:
-        body = _daily_body(stories, candidate_count)
+        body = _daily_body(stories, candidate_count, active_sources)
 
     return f"""<!DOCTYPE html>
 <html>

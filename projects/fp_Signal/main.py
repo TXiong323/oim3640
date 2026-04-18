@@ -49,6 +49,9 @@ def main():
     candidates = hn_items + show_hn_items + gh_items + blog_items + yt_items + ph_items
     print(f"Total candidates: {len(candidates)}")
 
+    # Track which sources actually have items (for the summary line)
+    active_sources = {c["source"] for c in candidates}
+
     print("Analyzing with DeepSeek...")
     result = analyzer.analyze(candidates, mode=mode)
     picks = result["items"]
@@ -80,6 +83,7 @@ def main():
         candidate_count=len(candidates),
         mode=mode,
         summary=summary,
+        active_sources=active_sources,
     )
     email_sender.send(subject, html)
 
