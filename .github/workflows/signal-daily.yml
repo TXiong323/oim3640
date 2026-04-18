@@ -1,8 +1,8 @@
-name: Signal Weekly Digest
+name: Signal - Daily Digest
 
 on:
   schedule:
-    - cron: "0 13 * * 0"   # 13:00 UTC Sunday = 9:00 AM ET Sunday
+    - cron: "0 11 * * *"   # 11:00 UTC = 7:00 AM ET
   workflow_dispatch:         # manual trigger for testing
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r projects/fp_Signal/requirements.txt
 
-      - name: Run weekly digest
+      - name: Run daily digest
         working-directory: projects/fp_Signal
         env:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
@@ -27,4 +27,4 @@ jobs:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           PRODUCTHUNT_CLIENT_ID: ${{ secrets.PRODUCTHUNT_CLIENT_ID }}
           PRODUCTHUNT_CLIENT_SECRET: ${{ secrets.PRODUCTHUNT_CLIENT_SECRET }}
-        run: python main.py weekly
+        run: python main.py daily
