@@ -7,7 +7,8 @@ from datetime import date
 SOURCE_LABEL = {
     "hn": "Hacker News",
     "github": "GitHub Trending",
-    "arxiv": "arXiv",
+    "anthropic": "Anthropic blog",
+    "openai": "OpenAI blog",
 }
 
 
@@ -37,13 +38,11 @@ def _meta_line(story: dict) -> str:
             parts.append(lang)
         parts.append(label)
         return " &middot; ".join(parts)
-    elif source == "arxiv":
-        authors = meta.get("authors", "")
-        category = meta.get("category", "arXiv")
+    elif source in ("anthropic", "openai"):
+        published = meta.get("published", "")
         parts = []
-        if authors:
-            parts.append(authors)
-        parts.append(category)
+        if published:
+            parts.append(published)
         parts.append(label)
         return " &middot; ".join(parts)
     return label
@@ -80,7 +79,7 @@ def build_html(stories: list[dict], candidate_count: int = 0) -> str:
 
         body = f"""
   <p style="color:#888;font-size:12px;">
-    {len(stories)} picks from {candidate_count} candidates &middot; HN + GitHub Trending + arXiv &middot; last 24h
+    {len(stories)} picks from {candidate_count} candidates &middot; HN + GitHub Trending + Anthropic/OpenAI blogs &middot; last 7d
   </p>
   <table width="100%" cellpadding="0" cellspacing="0">
     {rows}

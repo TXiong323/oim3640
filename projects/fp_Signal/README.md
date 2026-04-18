@@ -8,8 +8,7 @@ See [`proposal.md`](proposal.md) for goals, MVP scope, and stretch goals.
 
 ## Status
 
-**Phase 3b complete** — arXiv cs.AI + cs.CL added as third source  
-Phase 3c — Anthropic / OpenAI blog RSS  
+**Phase 3c complete** — Anthropic + OpenAI blogs added; vibe-coder filtering  
 Phase 3d — Product Hunt  
 Phase 4 — GitHub Actions cron
 
@@ -30,12 +29,13 @@ python main.py
 | `RECIPIENT_EMAIL` | Where to deliver the digest |
 | `DEEPSEEK_API_KEY` | DeepSeek API key from [platform.deepseek.com](https://platform.deepseek.com) |
 
-## How it works (Phase 3b)
+## How it works (Phase 3c)
 
 1. **Hacker News** — Algolia API, last 24h, ≥ 30 pts, AI keyword filter
-2. **GitHub Trending** — scrapes daily + weekly trending, filters by AI keywords in name/description; falls back to all trending if < 5 match
-3. **arXiv** — parses `cs.AI` and `cs.CL` RSS feeds, keyword-filters to ≤ 20 practitioner-relevant papers (agents, tools, reasoning, RAG, etc.)
-4. All candidates merged (~45 total) and passed to **DeepSeek** (`deepseek-chat`) via OpenAI-compatible API
-5. DeepSeek picks 5–7 items across all three sources; discards noise (pricing, politics, pure theory, games/entertainment)
-6. Each pick gets a ≤40-char Chinese `why_it_matters` note (technical terms stay in English)
-7. Email shows source label + appropriate metadata per source (HN: pts/comments; GitHub: stars; arXiv: authors/category)
+2. **GitHub Trending** — scrapes daily + weekly, filters by AI keywords; falls back to all trending if < 5 match
+3. **Anthropic blog** — scrapes `anthropic.com/news`, last 7 days
+4. **OpenAI blog** — RSS feed, last 7 days
+5. All candidates merged (~30 total) and passed to **DeepSeek** (`deepseek-chat`)
+6. DeepSeek filters for a vibe-coder audience: prioritizes usable tools, new model releases, MCP/Claude Code skills; discards academic papers, low-level dev tools, business news, games
+7. Returns 3–6 picks; each gets a ≤40-char Chinese `why_it_matters` (technical terms in English) and a `display_title` with normalized brand capitalization
+8. Email shows source + metadata per type (HN: pts/comments; GitHub: stars; blogs: date)
