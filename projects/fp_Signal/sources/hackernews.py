@@ -19,7 +19,7 @@ _WORD_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
-MIN_POINTS = 50
+MIN_POINTS = 30
 HOURS_BACK = 24
 
 
@@ -35,7 +35,7 @@ def fetch() -> list[dict]:
     params = {
         "tags": "story",
         "numericFilters": f"points>={MIN_POINTS},created_at_i>{cutoff}",
-        "hitsPerPage": 100,
+        "hitsPerPage": 200,
     }
     resp = requests.get(API_URL, params=params, timeout=10)
     resp.raise_for_status()
