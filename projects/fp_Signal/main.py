@@ -1,15 +1,25 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from datetime import date
-from sources import hackernews, github_trending, blogs
+import sys
+from datetime import date, timedelta
+from sources import hackernews, github_trending, blogs, youtube
 import analyzer
 import email_sender
 
 
 def main():
+    mode = sys.argv[1] if len(sys.argv) > 1 else "daily"
+    if mode not in ("daily", "weekly"):
+        print(f"Unknown mode '{mode}'. Use: daily | weekly")
+        sys.exit(1)
+
+    hours_back = 24 if mode == "daily" else 7 * 24
+
+    print(f"Mode: {mode} ({hours_back}h window)")
+
     print("Fetching Hacker News...")
-    hn_items = hackernews.fetch()
+    hn_items = hackernews.fetch(hours_back=hours_back)
     print(f"  {len(hn_items)} candidates")
 
     print("Fetching GitHub Trending...")
@@ -20,15 +30,20 @@ def main():
     blog_items = blogs.fetch()
     print(f"  {len(blog_items)} candidates")
 
-    candidates = hn_items + gh_items + blog_items
+    print("Fetching YouTube...")
+    yt_items = youtube.fetch(hours_back=hours_back)
+    print(f"  {len(yt_items)} candidates")
+
+    candidates = hn_items + gh_items + blog_items + yt_items
     print(f"Total candidates: {len(candidates)}")
 
     print("Analyzing with DeepSeek...")
-    picks = analyzer.analyze(candidates)
+    result = analyzer.analyze(candidates, mode=mode)
+    picks = result["items"]
+    summary = result["summary"]
     print(f"  {len(picks)} picks after filtering")
 
     meta_index = {c["url"]: c for c in candidates}
-
     stories = []
     for pick in picks:
         c = meta_index.get(pick["url"], {})
@@ -40,8 +55,20 @@ def main():
             "metadata": c.get("metadata", {}),
         })
 
-    subject = f"Signal: AI/Tech Digest — {date.today().strftime('%b %d, %Y')}"
-    html = email_sender.build_html(stories, candidate_count=len(candidates))
+    if mode == "weekly":
+        today = date.today()
+        week_start = today - timedelta(days=6)
+        date_range = f"{week_start.strftime('%b %d')} – {today.strftime('%b %d, %Y')}"
+        subject = f"Signal · 周报 · {date_range}"
+    else:
+        subject = f"Signal · 日报 · {date.today().strftime('%b %d, %Y')}"
+
+    html = email_sender.build_html(
+        stories,
+        candidate_count=len(candidates),
+        mode=mode,
+        summary=summary,
+    )
     email_sender.send(subject, html)
 
 

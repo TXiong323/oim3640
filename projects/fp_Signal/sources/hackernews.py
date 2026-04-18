@@ -19,7 +19,6 @@ _WORD_PATTERN = re.compile(
 )
 
 MIN_POINTS = 30
-HOURS_BACK = 24
 
 
 def _is_ai_related(title: str) -> bool:
@@ -29,8 +28,8 @@ def _is_ai_related(title: str) -> bool:
     return any(kw in lower for kw in _SUBSTRING_KEYWORDS)
 
 
-def fetch() -> list[dict]:
-    cutoff = int(time.time()) - HOURS_BACK * 3600
+def fetch(hours_back: int = 24) -> list[dict]:
+    cutoff = int(time.time()) - hours_back * 3600
     params = {
         "tags": "story",
         "numericFilters": f"points>={MIN_POINTS},created_at_i>{cutoff}",

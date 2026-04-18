@@ -8,8 +8,7 @@ See [`proposal.md`](proposal.md) for goals, MVP scope, and stretch goals.
 
 ## Status
 
-**Phase 3c complete** — Anthropic + OpenAI blogs added; vibe-coder filtering  
-Phase 3d — Product Hunt  
+**Phase 3d complete** — YouTube added; daily + weekly modes; longer Chinese analysis  
 Phase 4 — GitHub Actions cron
 
 ## Setup
@@ -29,13 +28,23 @@ python main.py
 | `RECIPIENT_EMAIL` | Where to deliver the digest |
 | `DEEPSEEK_API_KEY` | DeepSeek API key from [platform.deepseek.com](https://platform.deepseek.com) |
 
-## How it works (Phase 3c)
+## How it works (Phase 3d)
 
-1. **Hacker News** — Algolia API, last 24h, ≥ 30 pts, AI keyword filter
-2. **GitHub Trending** — scrapes daily + weekly, filters by AI keywords; falls back to all trending if < 5 match
-3. **Anthropic blog** — scrapes `anthropic.com/news`, last 7 days
-4. **OpenAI blog** — RSS feed, last 7 days
-5. All candidates merged (~30 total) and passed to **DeepSeek** (`deepseek-chat`)
-6. DeepSeek filters for a vibe-coder audience: prioritizes usable tools, new model releases, MCP/Claude Code skills; discards academic papers, low-level dev tools, business news, games
-7. Returns 3–6 picks; each gets a ≤40-char Chinese `why_it_matters` (technical terms in English) and a `display_title` with normalized brand capitalization
-8. Email shows source + metadata per type (HN: pts/comments; GitHub: stars; blogs: date)
+**Sources (4):**
+1. **Hacker News** — Algolia API, ≥ 30 pts, AI keyword filter
+2. **GitHub Trending** — scrapes daily + weekly, AI keyword filter
+3. **Anthropic + OpenAI blogs** — scrapes Anthropic news page + OpenAI RSS, last 7 days
+4. **YouTube** — RSS feeds for Matt Wolfe, Matthew Berman, Fireship (AI-filtered), Theo (t3.gg); per-channel error isolation
+
+**Modes:**
+- `python main.py daily` — 24h window, 3–7 picks, subject: `Signal · 日报 · Apr 17`
+- `python main.py weekly` — 7d window, 10–20 picks, subject: `Signal · 周报 · Apr 11 – Apr 17`
+- Default (no arg): daily
+
+**Pipeline:**
+1. All sources fetched with the appropriate time window
+2. Candidates merged (~30–90 total depending on mode) and passed to **DeepSeek** (`deepseek-chat`)
+3. DeepSeek filters for a vibe-coder audience (YouTube = highest priority; discard academic papers, low-level tools, business news, games)
+4. Each pick gets a 60–100 char Chinese `why_it_matters` covering: what it is + what you can do + why useful
+5. `display_title` normalizes GitHub owner capitalization (openai/ → OpenAI /)
+6. Weekly email: 100–150 char Chinese summary at top, items grouped by source (📺 YouTube / 🐙 GitHub / 📰 Articles)
