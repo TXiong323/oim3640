@@ -46,11 +46,19 @@ DISPLAY TITLE:
 - For GitHub repos: capitalize the owner correctly (openai/ → OpenAI /, google/ → Google /, anthropic/ → Anthropic /; unknown owners: capitalize first letter).
 - For all other items: return the original title unchanged.
 
-REPEAT DETECTION (seen_count field on each candidate):
-- seen_count=0: normal priority, first time appearing.
-- seen_count=1–2: keep only if why_it_matters can describe a concrete new development since last time; otherwise skip.
-- seen_count=3–4: strong preference to skip unless there is a major new update.
-- seen_count>=5: always skip, do not include.
+FRESHNESS AND REPEAT DETECTION (seen_count field on each candidate):
+Freshness is a core selection criterion — the digest must bring new information every day.
+- seen_count=0: first appearance, normal priority. All else equal, prefer these.
+- seen_count>=1: the item appeared in a previous digest. Only include it if there is a concrete, describable new development (a new release, a version bump, a major update). If nothing has concretely changed, skip it — even if it has high votes or stars. "Still popular" is not a reason to re-include.
+- seen_count>=3: skip unless there is a genuinely significant update. The bar is very high.
+- seen_count>=5: always skip, no exceptions.
+
+Source freshness guidance (soft targets, not hard rules):
+- Product Hunt top products tend to stay at the top for days — cap at ~3 PH items per digest to prevent the same products dominating every day.
+- GitHub Trending and Show HN change daily — prefer 2–3 GitHub picks and 1–2 from HN/Show HN when quality is comparable.
+- YouTube and official blog posts are typically new each day — keep them if relevant.
+- The goal is that a reader who reads every day should get genuinely new information each time, not see the same 5 products recycled.
+
 In your response, copy the seen_count value into a "seen_before" field on each item.
 
 Return ONLY valid JSON, no markdown fences."""
