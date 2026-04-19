@@ -2,7 +2,7 @@ import re
 from datetime import date, timedelta
 from pathlib import Path
 
-ARCHIVE_DIR = Path(__file__).parent / "archive"
+ARCHIVE_DIR = Path(__file__).parent / ".." / ".." / "docs"
 KEEP_DAYS = 14
 
 _DATE_RE = re.compile(r"^(daily|weekly)-(\d{4}-\d{2}-\d{2})\.html$")
@@ -80,4 +80,4 @@ def save(html: str, mode: str, run_date: date) -> None:
     (ARCHIVE_DIR / filename).write_text(_inject_back_link(html), encoding="utf-8")
     _clean_old(run_date)
     _rebuild_index()
-    print(f"Archived to archive/{filename}")
+    print(f"Archived to docs/{filename}")

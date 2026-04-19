@@ -61,7 +61,7 @@ Every run writes a timestamped HTML file to `archive/` and regenerates `archive/
 
 1. Go to **Settings → Pages**
 2. Source: **Deploy from a branch**
-3. Branch: `main` / Folder: `/projects/fp_Signal/archive`
+3. Branch: `main` / Folder: `/docs`
 4. Save
 
 Your archive will be live at:
