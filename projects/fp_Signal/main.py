@@ -5,6 +5,7 @@ import sys
 from datetime import date, timedelta
 from sources import hackernews, github_trending, blogs, youtube, producthunt
 import analyzer
+import archiver
 import email_sender
 
 
@@ -86,6 +87,7 @@ def main():
         active_sources=active_sources,
     )
     email_sender.send(subject, html)
+    archiver.save(html, mode, date.today())
 
 
 if __name__ == "__main__":

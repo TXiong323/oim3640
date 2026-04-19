@@ -8,8 +8,7 @@ See [`proposal.md`](proposal.md) for goals, MVP scope, and stretch goals.
 
 ## Status
 
-**Phase 3 complete** — all sources added (HN, Show HN, GitHub, Blogs, YouTube, Product Hunt)  
-Phase 4 — GitHub Actions cron
+**Phase 4 complete** — GitHub Actions cron + archive system  
 
 ## Local development
 
@@ -54,7 +53,25 @@ Both support **manual trigger** via `workflow_dispatch` (Actions tab → select 
 | `PRODUCTHUNT_CLIENT_ID` | From [api.producthunt.com/v2/oauth/applications](https://api.producthunt.com/v2/oauth/applications) |
 | `PRODUCTHUNT_CLIENT_SECRET` | Same app registration page |
 
-## How it works (Phase 3d)
+## Archive
+
+Every run writes a timestamped HTML file to `archive/` and regenerates `archive/index.html`. Files older than 14 days are automatically deleted.
+
+**Enable GitHub Pages** to browse the archive in a browser:
+
+1. Go to **Settings → Pages**
+2. Source: **Deploy from a branch**
+3. Branch: `main` / Folder: `/projects/fp_Signal/archive`
+4. Save
+
+Your archive will be live at:
+```
+https://TXiong323.github.io/oim3640/
+```
+
+The index page lists all available digests; each digest links back to the index.
+
+## How it works (Phase 4)
 
 **Sources (6):**
 1. **Hacker News** — Algolia API, ≥ 30 pts, AI keyword filter
