@@ -69,6 +69,20 @@ def _meta_line(story: dict) -> str:
     return label
 
 
+def _seen_badge(seen_before: int) -> str:
+    if seen_before <= 0:
+        return ""
+    if seen_before <= 2:
+        return (
+            f'<span style="font-size:12px;color:#999;margin-left:8px;">'
+            f'· 已出现 {seen_before} 天</span>'
+        )
+    return (
+        f'<span style="font-size:12px;color:#d97706;margin-left:8px;">'
+        f'· 已出现 {seen_before} 天</span>'
+    )
+
+
 def _story_row(i: int, s: dict) -> str:
     why = s.get("why_it_matters", "")
     why_html = (
@@ -76,11 +90,12 @@ def _story_row(i: int, s: dict) -> str:
         if why else ""
     )
     meta_html = _meta_line(s)
+    badge = _seen_badge(s.get("seen_before", 0))
     return f"""
         <tr>
           <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
             <span style="color:#bbb;font-size:12px;">{i}.&nbsp;</span>
-            <a href="{s['url']}" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">{s['title']}</a>
+            <a href="{s['url']}" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">{s['title']}</a>{badge}
             {why_html}
             <br><span style="font-size:12px;color:#aaa;">{meta_html}</span>
           </td>

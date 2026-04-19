@@ -46,6 +46,13 @@ DISPLAY TITLE:
 - For GitHub repos: capitalize the owner correctly (openai/ → OpenAI /, google/ → Google /, anthropic/ → Anthropic /; unknown owners: capitalize first letter).
 - For all other items: return the original title unchanged.
 
+REPEAT DETECTION (seen_count field on each candidate):
+- seen_count=0: normal priority, first time appearing.
+- seen_count=1–2: keep only if why_it_matters can describe a concrete new development since last time; otherwise skip.
+- seen_count=3–4: strong preference to skip unless there is a major new update.
+- seen_count>=5: always skip, do not include.
+In your response, copy the seen_count value into a "seen_before" field on each item.
+
 Return ONLY valid JSON, no markdown fences."""
 
 _DAILY_USER = """Today's candidates. Pick the best 3–7 for a daily digest. Return JSON only.
@@ -56,7 +63,7 @@ Candidates:
 Format:
 {{
   "items": [
-    {{"title": "...", "display_title": "...", "url": "...", "why_it_matters": "..."}}
+    {{"title": "...", "display_title": "...", "url": "...", "why_it_matters": "...", "seen_before": 0}}
   ]
 }}"""
 
@@ -71,7 +78,7 @@ Format:
 {{
   "summary": "...",
   "items": [
-    {{"title": "...", "display_title": "...", "url": "...", "why_it_matters": "..."}}
+    {{"title": "...", "display_title": "...", "url": "...", "why_it_matters": "...", "seen_before": 0}}
   ]
 }}"""
 
@@ -83,7 +90,9 @@ def analyze(candidates: list[dict], mode: str = "daily") -> dict:
     )
 
     lines = "\n".join(
-        f"{i+1}. [{c['source'].upper()}] title: {c['title']}\n    url: {c['url']}"
+        f"{i+1}. [{c['source'].upper()}] title: {c['title']}\n"
+        f"    url: {c['url']}\n"
+        f"    seen_count: {c.get('seen_count', 0)}"
         for i, c in enumerate(candidates)
     )
 

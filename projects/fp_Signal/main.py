@@ -6,6 +6,7 @@ from datetime import date, timedelta
 from sources import hackernews, github_trending, blogs, youtube, producthunt
 import analyzer
 import archiver
+import dedup
 import email_sender
 
 
@@ -53,6 +54,11 @@ def main():
     # Track which sources actually have items (for the summary line)
     active_sources = {c["source"] for c in candidates}
 
+    # Cross-day dedup: annotate each candidate with how many times it's been seen
+    history = dedup.get_historical_urls()
+    for c in candidates:
+        c["seen_count"] = history.get(c["url"], 0)
+
     print("Analyzing with DeepSeek...")
     result = analyzer.analyze(candidates, mode=mode)
     picks = result["items"]
@@ -68,6 +74,7 @@ def main():
             "title": pick.get("display_title") or pick["title"],
             "url": pick["url"],
             "why_it_matters": pick.get("why_it_matters", ""),
+            "seen_before": pick.get("seen_before", 0),
             "metadata": c.get("metadata", {}),
         })
 
