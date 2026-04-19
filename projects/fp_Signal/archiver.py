@@ -2,7 +2,7 @@ import re
 from datetime import date, timedelta
 from pathlib import Path
 
-ARCHIVE_DIR = Path(__file__).parent / ".." / ".." / "docs"
+ARCHIVE_DIR = (Path(__file__).parent / ".." / ".." / "docs").resolve()
 KEEP_DAYS = 14
 
 _DATE_RE = re.compile(r"^(daily|weekly)-(\d{4}-\d{2}-\d{2})\.html$")
