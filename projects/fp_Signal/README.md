@@ -45,85 +45,82 @@ Weekly digests run Sunday at 9am ET, include a synthesis paragraph summarizing t
 ```bash
 cd projects/fp_Signal
 pip install -r requirements.txt
-cp .env.example .env
-# Fill in the real values in .env
-python main.py daily    # or: python main.py weekly
+cp .env.example .env   # fill in real values (see table below)
+python main.py          # daily digest (default)
+python main.py daily    # explicit daily
+python main.py weekly   # weekly digest
 ```
 
-`main.py daily` fetches a 24-hour window; `main.py weekly` fetches 7 days and adds a synthesis paragraph. Both send an email and write an archive file to `../../docs/`.
+## Automated runs via GitHub Actions
 
-### Required environment variables
+Two workflows run on a schedule:
 
-| Variable | Purpose |
-| --- | --- |
-| `GMAIL_ADDRESS` | Sender Gmail address |
-| `GMAIL_APP_PASSWORD` | Gmail app password (not your login password) |
-| `RECIPIENT_EMAIL` | Where the digest is sent |
-| `DEEPSEEK_API_KEY` | For the filter + synthesis step |
-| `PRODUCTHUNT_CLIENT_ID` | Product Hunt API credentials |
-| `PRODUCTHUNT_CLIENT_SECRET` | Product Hunt API credentials |
+| Workflow | Schedule | Command |
+|---|---|---|
+| `daily.yml` | Every day at 7:00 AM ET (11:00 UTC) | `python main.py daily` |
+| `weekly.yml` | Every Sunday at 9:00 AM ET (13:00 UTC) | `python main.py weekly` |
 
-The real `.env` is gitignored. See `.env.example` for the template.
+Both support **manual trigger** via `workflow_dispatch` (Actions tab → select workflow → Run workflow).
 
----
+**Required repo secrets** (Settings → Secrets and variables → Actions):
 
-## Automated runs
+| Secret | Value |
+|---|---|
+| `GMAIL_ADDRESS` | Your Gmail address |
+| `GMAIL_APP_PASSWORD` | Gmail App Password |
+| `RECIPIENT_EMAIL` | Delivery address |
+| `DEEPSEEK_API_KEY` | DeepSeek API key |
+| `PRODUCTHUNT_CLIENT_ID` | Product Hunt OAuth client ID |
+| `PRODUCTHUNT_CLIENT_SECRET` | Product Hunt OAuth client secret |
 
-The system runs on GitHub Actions without any servers of my own:
+## Environment variables
 
-- `.github/workflows/signal-daily.yml` — daily at 11:00 UTC (7am ET)
-- `.github/workflows/signal-weekly.yml` — Sundays at 13:00 UTC (9am ET)
-
-Both workflows also support manual `workflow_dispatch` triggers from the Actions UI, which is how I test.
-
-**To set this up on a fork:**
-
-1. Go to **Settings → Secrets and variables → Actions** and add the six environment variables above as repo secrets.
-2. Go to **Settings → Pages** and set Source = `Deploy from a branch`, Branch = `main`, Folder = `/docs`.
-3. Trigger the daily workflow manually once to verify end-to-end.
-
-The workflows have `contents: write` permission so they can commit the updated archive back to the repo.
-
----
+| Variable | Description |
+|---|---|
+| `GMAIL_ADDRESS` | Your Gmail address used to send |
+| `GMAIL_APP_PASSWORD` | [Gmail App Password](https://myaccount.google.com/apppasswords) (not your regular password) |
+| `RECIPIENT_EMAIL` | Where to deliver the digest |
+| `DEEPSEEK_API_KEY` | DeepSeek API key from [platform.deepseek.com](https://platform.deepseek.com) |
+| `PRODUCTHUNT_CLIENT_ID` | From [api.producthunt.com/v2/oauth/applications](https://api.producthunt.com/v2/oauth/applications) |
+| `PRODUCTHUNT_CLIENT_SECRET` | Same app registration page |
 
 ## Archive
 
-Every run writes an HTML copy of the email to `docs/` at the repo root:
+Every run writes a timestamped HTML file to `archive/` and regenerates `archive/index.html`. Files older than 14 days are automatically deleted.
 
-- `docs/index.html` — landing page, lists everything in reverse chronological order
-- `docs/daily-YYYY-MM-DD.html` — that day's daily digest
-- `docs/weekly-YYYY-MM-DD.html` — that week's weekly digest
+**Enable GitHub Pages** to browse the archive in a browser:
 
-**14-day retention.** Every run also deletes archive files whose filename date is older than 14 days. `index.html` is regenerated from scratch so it always reflects the current contents of `docs/`.
+1. Go to **Settings → Pages**
+2. Source: **Deploy from a branch**
+3. Branch: `main` / Folder: `/docs`
+4. Save
 
-The archive is public at <https://TXiong323.github.io/oim3640/>.
-
----
-
-## Structure
-
+Your archive will be live at:
 ```
-projects/fp_Signal/
-├── main.py              # Orchestrator: fetch → dedupe → filter → email → archive
-├── analyzer.py          # DeepSeek call + prompt + JSON parsing
-├── email_sender.py      # Gmail SMTP + HTML rendering
-├── archive.py           # Write HTML to docs/, clean old files, rebuild index
-├── sources/
-│   ├── hackernews.py    # Algolia API + keyword filter
-│   ├── github_trending.py  # HTML scrape of trending pages
-│   ├── youtube.py       # RSS from 4 channels
-│   ├── producthunt.py   # GraphQL + OAuth
-│   └── blogs.py         # Anthropic + OpenAI RSS
-├── requirements.txt
-├── .env.example
-├── proposal.md
-└── AI_USAGE.md
+https://TXiong323.github.io/oim3640/
 ```
 
-Workflows live at the repo root (`.github/workflows/`) because GitHub Actions only recognizes workflow files at the root, not under a subdirectory.
+The index page lists all available digests; each digest links back to the index.
 
----
+## How it works (Phase 4)
 
-## Acknowledgments
+**Sources (6):**
+1. **Hacker News** — Algolia API, ≥ 30 pts, AI keyword filter
+2. **Show HN** — Algolia `show_hn` tag, ≥ 20 pts, AI keyword filter; surfaces builder projects
+3. **GitHub Trending** — scrapes daily + weekly, AI keyword filter
+4. **Anthropic + OpenAI blogs** — scrapes Anthropic news page + OpenAI RSS, last 7 days
+5. **YouTube** — RSS feeds for Matt Wolfe, Matthew Berman, Fireship (AI-filtered), Theo (t3.gg); per-channel error isolation
+6. **Product Hunt** — GraphQL API v2, `artificial-intelligence` topic, sorted by votes; requires `PRODUCTHUNT_CLIENT_ID` + `PRODUCTHUNT_CLIENT_SECRET`
 
-Built iteratively with Claude and Claude Code. See [`AI_USAGE.md`](AI_USAGE.md) for the full log of how AI tools were used at each stage of the project.
+**Modes:**
+- `python main.py daily` — 24h window, 3–7 picks, subject: `Signal · 日报 · Apr 17`
+- `python main.py weekly` — 7d window, 10–20 picks, subject: `Signal · 周报 · Apr 11 – Apr 17`
+- Default (no arg): daily
+
+**Pipeline:**
+1. All sources fetched with the appropriate time window
+2. Candidates merged (~30–90 total depending on mode) and passed to **DeepSeek** (`deepseek-chat`)
+3. DeepSeek filters for a vibe-coder audience (YouTube = highest priority; discard academic papers, low-level tools, business news, games)
+4. Each pick gets a 60–100 char Chinese `why_it_matters` covering: what it is + what you can do + why useful
+5. `display_title` normalizes GitHub owner capitalization (openai/ → OpenAI /)
+6. Weekly email: 100–150 char Chinese summary at top, items grouped by source (📺 YouTube / 🐙 GitHub / 📰 Articles)
