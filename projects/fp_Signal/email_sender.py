@@ -70,7 +70,7 @@ def _meta_line(story: dict) -> str:
 
 
 def _seen_badge(seen_before: int) -> str:
-    if seen_before <= 1:
+    if seen_before <= 0:
         return ""
     if seen_before <= 2:
         return (
