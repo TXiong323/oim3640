@@ -10,6 +10,21 @@ import dedup
 import email_sender
 
 
+def _build_stories(picks: list[dict], meta_index: dict) -> list[dict]:
+    stories = []
+    for pick in picks:
+        c = meta_index.get(pick["url"], {})
+        stories.append({
+            "source": c.get("source", ""),
+            "title": pick.get("display_title") or pick["title"],
+            "url": pick["url"],
+            "why_it_matters": pick.get("why_it_matters", ""),
+            "seen_before": pick.get("seen_before", 0),
+            "metadata": c.get("metadata", {}),
+        })
+    return stories
+
+
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "daily"
     if mode not in ("daily", "weekly"):
@@ -51,13 +66,41 @@ def main():
     candidates = hn_items + show_hn_items + gh_items + blog_items + yt_items + ph_items
     print(f"Total candidates: {len(candidates)}")
 
-    # Track which sources actually have items (for the summary line)
     active_sources = {c["source"] for c in candidates}
 
-    # Cross-day dedup: annotate each candidate with how many times it's been seen
     history = dedup.get_historical_urls()
     for c in candidates:
         c["seen_count"] = history.get(c["url"], 0)
+
+    headline_stories = []
+    if mode == "daily":
+        # Build a 7-day pool for the headlines section by extending HN/ShowHN window.
+        # Blogs already cover 7 days; GitHub/YT/PH from the 24h fetch are included as-is.
+        print("Fetching 7-day HN pool for headlines...")
+        hn_7d = hackernews.fetch(hours_back=7 * 24)
+        show_hn_7d = hackernews.fetch_show_hn(hours_back=7 * 24)
+        print(f"  {len(hn_7d) + len(show_hn_7d)} HN candidates (7d)")
+
+        seen_urls: set[str] = set()
+        candidates_7d: list[dict] = []
+        for c in hn_7d + show_hn_7d + gh_items + blog_items + yt_items + ph_items:
+            if c["url"] not in seen_urls:
+                seen_urls.add(c["url"])
+                candidates_7d.append(c)
+        for c in candidates_7d:
+            c["seen_count"] = history.get(c["url"], 0)
+
+        print("Analyzing headlines with DeepSeek...")
+        headline_result = analyzer.analyze_headlines(candidates_7d)
+        headline_picks = headline_result["items"]
+        print(f"  {len(headline_picks)} headline picks")
+
+        meta_index_7d = {c["url"]: c for c in candidates_7d}
+        headline_stories = _build_stories(headline_picks, meta_index_7d)
+
+        # Exclude headline URLs from today's fresh candidates
+        headline_urls = {s["url"] for s in headline_stories}
+        candidates = [c for c in candidates if c["url"] not in headline_urls]
 
     print("Analyzing with DeepSeek...")
     result = analyzer.analyze(candidates, mode=mode)
@@ -66,17 +109,7 @@ def main():
     print(f"  {len(picks)} picks after filtering")
 
     meta_index = {c["url"]: c for c in candidates}
-    stories = []
-    for pick in picks:
-        c = meta_index.get(pick["url"], {})
-        stories.append({
-            "source": c.get("source", ""),
-            "title": pick.get("display_title") or pick["title"],
-            "url": pick["url"],
-            "why_it_matters": pick.get("why_it_matters", ""),
-            "seen_before": pick.get("seen_before", 0),
-            "metadata": c.get("metadata", {}),
-        })
+    stories = _build_stories(picks, meta_index)
 
     if mode == "weekly":
         today = date.today()
@@ -92,6 +125,7 @@ def main():
         mode=mode,
         summary=summary,
         active_sources=active_sources,
+        headline_stories=headline_stories,
     )
     email_sender.send(subject, html)
     archiver.save(html, mode, date.today())

@@ -90,20 +90,71 @@ Format:
   ]
 }}"""
 
+_HEADLINES_SYSTEM = """You are selecting "Top Headlines of the Week" for an AI/tech digest — a pinned section that highlights the single most significant AI industry events of the past 7 days.
 
-def analyze(candidates: list[dict], mode: str = "daily") -> dict:
-    client = OpenAI(
+INCLUDE ONLY items that meet ALL of these criteria:
+1. Official release by a major AI company: OpenAI, Anthropic, Google/DeepMind, Meta, Microsoft, Apple, or xAI
+2. Core product announcement: a new model, new model version, new SDK, new official agent capability, or new flagship API feature
+3. Developer-level significance: something a developer would immediately say changes how they build or work — Codex CLI, Claude Code, GPT-4o, Gemini 2.0 level significance
+
+EXPLICITLY EXCLUDE — do not include under any circumstances:
+- Third-party tools, plugins, wrappers, or GitHub repos built on top of AI models
+- Product Hunt launches by individual developers or startups
+- Research papers, preprints, or benchmarks
+- Community projects, tutorials, blog posts, or opinion pieces
+- Incremental updates, minor patches, or price changes
+- Funding rounds, acquisitions, partnerships, or business news
+- HN discussion threads unless the URL is the official company announcement
+
+FRESHNESS NOTE: Items published 2–7 days ago are still valid for this section. The purpose is to keep major events visible for the full week after they ship.
+
+WRITING RULES for why_it_matters:
+- Write in Chinese, 60–100 characters
+- Cover: ① 这是什么 ② 为什么重要/能做什么
+- Keep product names and technical terms in English
+- No filler phrases like "这反映了..." or "这标志着..."
+
+DISPLAY TITLE:
+- Return the original title unchanged for all items.
+
+Return the seen_count value as "seen_before" on each item.
+
+If there are no items that genuinely meet the threshold, return an empty items list. Do NOT fill the list with second-tier content.
+
+Return ONLY valid JSON, no markdown fences."""
+
+_HEADLINES_USER = """From the past 7 days of candidates, select at most 3 that qualify as major official releases from big AI companies. Return them newest-first (most recent publication date first). Return JSON only.
+
+Candidates:
+{candidates}
+
+Format:
+{{
+  "items": [
+    {{"title": "...", "display_title": "...", "url": "...", "why_it_matters": "...", "seen_before": 0}}
+  ]
+}}"""
+
+
+def _make_client() -> OpenAI:
+    return OpenAI(
         api_key=os.environ["DEEPSEEK_API_KEY"],
         base_url="https://api.deepseek.com",
     )
 
-    lines = "\n".join(
+
+def _format_candidates(candidates: list[dict]) -> str:
+    return "\n".join(
         f"{i+1}. [{c['source'].upper()}] title: {c['title']}\n"
         f"    url: {c['url']}\n"
         f"    seen_count: {c.get('seen_count', 0)}"
         for i, c in enumerate(candidates)
     )
 
+
+def analyze(candidates: list[dict], mode: str = "daily") -> dict:
+    client = _make_client()
+    lines = _format_candidates(candidates)
     template = _WEEKLY_USER if mode == "weekly" else _DAILY_USER
 
     response = client.chat.completions.create(
@@ -122,3 +173,26 @@ def analyze(candidates: list[dict], mode: str = "daily") -> dict:
         "items": data.get("items", []),
         "summary": data.get("summary", ""),
     }
+
+
+def analyze_headlines(candidates: list[dict]) -> dict:
+    """Select up to 3 major big-tech release items from a 7-day candidate pool."""
+    if not candidates:
+        return {"items": []}
+
+    client = _make_client()
+    lines = _format_candidates(candidates)
+
+    response = client.chat.completions.create(
+        model="deepseek-chat",
+        response_format={"type": "json_object"},
+        messages=[
+            {"role": "system", "content": _HEADLINES_SYSTEM},
+            {"role": "user", "content": _HEADLINES_USER.format(candidates=lines)},
+        ],
+        temperature=0.1,
+    )
+
+    raw = response.choices[0].message.content
+    data = json.loads(raw)
+    return {"items": data.get("items", [])}

@@ -128,16 +128,37 @@ def _sources_label(active_sources: set[str]) -> str:
     return " + ".join(parts) if parts else "multiple sources"
 
 
-def _daily_body(stories: list[dict], candidate_count: int, active_sources: set[str]) -> str:
+def _headlines_section(stories: list[dict]) -> str:
     if not stories:
-        return '<p style="color:#555;font-size:15px;padding:20px 0;">Nothing worth reading today. Check back tomorrow.</p>'
+        return ""
     rows = "".join(_story_row(i, s) for i, s in enumerate(stories, 1))
-    src_label = _sources_label(active_sources)
     return f"""
-  <p style="color:#888;font-size:12px;">
+  <h3 style="font-size:14px;font-weight:700;color:#1a1a1a;margin:0 0 4px;">📌 本周要闻（持续曝光区）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">{rows}</table>
+  <hr style="border:none;border-top:2px solid #eee;margin:20px 0;">"""
+
+
+def _daily_body(
+    stories: list[dict],
+    candidate_count: int,
+    active_sources: set[str],
+    headline_stories: list[dict] | None = None,
+) -> str:
+    headlines_html = _headlines_section(headline_stories or [])
+
+    if not stories:
+        fresh_html = '<p style="color:#555;font-size:15px;padding:20px 0;">Nothing worth reading today. Check back tomorrow.</p>'
+    else:
+        rows = "".join(_story_row(i, s) for i, s in enumerate(stories, 1))
+        src_label = _sources_label(active_sources)
+        fresh_html = f"""
+  <h3 style="font-size:14px;font-weight:700;color:#1a1a1a;margin:0 0 4px;">🆕 今日新鲜</h3>
+  <p style="color:#888;font-size:12px;margin:4px 0 8px;">
     {len(stories)} picks from {candidate_count} candidates &middot; {src_label} &middot; last 24h
   </p>
   <table width="100%" cellpadding="0" cellspacing="0">{rows}</table>"""
+
+    return headlines_html + fresh_html
 
 
 def _weekly_body(stories: list[dict], candidate_count: int, summary: str, active_sources: set[str]) -> str:
@@ -178,6 +199,7 @@ def build_html(
     mode: str = "daily",
     summary: str = "",
     active_sources: set[str] | None = None,
+    headline_stories: list[dict] | None = None,
 ) -> str:
     if active_sources is None:
         active_sources = set()
@@ -186,7 +208,7 @@ def build_html(
     if mode == "weekly":
         body = _weekly_body(stories, candidate_count, summary, active_sources)
     else:
-        body = _daily_body(stories, candidate_count, active_sources)
+        body = _daily_body(stories, candidate_count, active_sources, headline_stories)
 
     return f"""<!DOCTYPE html>
 <html>
