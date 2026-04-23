@@ -128,14 +128,39 @@ def _sources_label(active_sources: set[str]) -> str:
     return " + ".join(parts) if parts else "multiple sources"
 
 
+def _headline_story_row(i: int, s: dict, is_last: bool = False) -> str:
+    why = s.get("why_it_matters", "")
+    why_html = (
+        f'<br><em style="font-size:13px;color:#92400E;line-height:1.5;">{why}</em>'
+        if why else ""
+    )
+    meta_html = _meta_line(s)
+    badge = _seen_badge(s.get("seen_before", 0))
+    border = "" if is_last else "border-bottom:1px solid #FED7AA;"
+    return f"""
+        <tr>
+          <td style="padding:12px 0;{border}vertical-align:top;">
+            <a href="{s['url']}" style="font-size:15px;font-weight:700;color:#1a1a1a;text-decoration:none;">{s['title']}</a>{badge}
+            {why_html}
+            <br><span style="font-size:12px;color:#B45309;">{meta_html}</span>
+          </td>
+        </tr>"""
+
+
 def _headlines_section(stories: list[dict]) -> str:
     if not stories:
         return ""
-    rows = "".join(_story_row(i, s) for i, s in enumerate(stories, 1))
+    last_idx = len(stories) - 1
+    rows = "".join(
+        _headline_story_row(idx + 1, s, is_last=(idx == last_idx))
+        for idx, s in enumerate(stories)
+    )
     return f"""
-  <h3 style="font-size:14px;font-weight:700;color:#1a1a1a;margin:0 0 4px;">📌 本周要闻（持续曝光区）</h3>
-  <table width="100%" cellpadding="0" cellspacing="0">{rows}</table>
-  <hr style="border:none;border-top:2px solid #eee;margin:20px 0;">"""
+  <div style="background:#FFF7ED;border-left:4px solid #EA580C;border-radius:6px;padding:16px 20px;margin-bottom:24px;">
+    <p style="margin:0 0 2px;font-size:18px;font-weight:700;color:#9A3412;">📌 本周要闻（持续曝光区）</p>
+    <p style="margin:0 0 12px;font-size:13px;color:#aaa;">过去 7 天值得持续关注的重大发布</p>
+    <table width="100%" cellpadding="0" cellspacing="0">{rows}</table>
+  </div>"""
 
 
 def _daily_body(
