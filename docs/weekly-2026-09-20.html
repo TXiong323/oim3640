@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:640px;margin:0 auto;padding:20px;color:#1a1a1a;">
+  <p style="font-size:13px;margin-bottom:16px;"><a href="./index.html" style="color:#888;text-decoration:none;">← Back to archive</a></p>
+  
+  <h2 style="border-bottom:2px solid #1a1a1a;padding-bottom:8px;">
+    Signal &mdash; AI/Tech Digest &middot; September 20, 2026
+  </h2>
+  
+  <p style="color:#888;font-size:12px;">
+    53 picks from 138 candidates &middot; HN + Show HN + YouTube + Product Hunt + GitHub + Blogs &middot; last 7d
+  </p>
+  
+  <div style="background:#f7f7f7;border-left:3px solid #1a1a1a;padding:12px 16px;margin:16px 0;font-size:14px;line-height:1.7;color:#333;">
+    本周真正落地的是「agent 基础设施」：Claude Code 开始读 AGENTS.md，跨工具配置标准终于统一；GitHub 上 agent skills、上下文压缩、并行 worktree 工具集中爆发，说明 vibe coder 的痛点已从「能不能写」转向「怎么管好一堆 agent」。产品侧，Bolt Forge、Sider Omni Sidebar、Text Agent Store 把 agent 塞进日常界面。另一条暗线是「反 AI 味」：humanizer、no-ai-slop 这类去 AI 腔工具走红，写作与代码都在追求人味。
+  </div>
+  
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">📺 YouTube 视频（8 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">1.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=Kof2VcHTjrk" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">AI News: All AI Labs Want To Slow Down (Except One)</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">梳理各家 AI 实验室对「放缓」的态度差异，指出谁在喊慢、谁在加速。想搞清行业动向和监管风向的人，一期视频看懂本周各家立场和背后动机。</em>
+            <br><span style="font-size:12px;color:#aaa;">Matt Wolfe &middot; Sep 18 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">2.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=NvVbCqDgfCs" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">How I Code Without Typing</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">演示完全靠语音和 AI 写代码的工作流，不敲键盘也能出项目。适合想彻底解放双手的 vibe coder，参考他怎么组织语音指令和 agent 协作。</em>
+            <br><span style="font-size:12px;color:#aaa;">Theo (t3.gg) &middot; Sep 16 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">3.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=iBrAWpjXNxs" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Please stop using stupid models</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">讲为什么该用更强的模型而不是图便宜用弱模型，算清省小钱亏大时间的账。纠结模型选型的 vibe coder 可以看它怎么权衡质量和成本。</em>
+            <br><span style="font-size:12px;color:#aaa;">Theo (t3.gg) &middot; Sep 18 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">4.&nbsp;</span>
+            <a href="https://www.youtube.com/shorts/FxcYK5WOk1c" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">I Was Shocked How Easy This Agent Was To Use</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">短视频演示一个上手极简单的 agent，展示从安装到出结果的全过程。想找个开箱即用 agent 的人，可以看它是否适合自己直接拿来跑。</em>
+            <br><span style="font-size:12px;color:#aaa;">Matt Wolfe &middot; Sep 15 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">5.&nbsp;</span>
+            <a href="https://www.youtube.com/shorts/Z4no-hhcuas" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">NVIDIA PAIR Connects Your Computers for Local AI</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">介绍 NVIDIA PAIR 把多台电脑连起来跑本地 AI，聚合算力。想跑本地大模型但单机不够的人，可以了解怎么用现有设备组一个本地推理集群。</em>
+            <br><span style="font-size:12px;color:#aaa;">Matthew Berman &middot; Sep 18 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">6.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=7r4ikZHm9AI" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Anthropic researchers are quitting... and now we know why</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">分析 Anthropic 研究员离职潮的原因，涉及公司方向和内部矛盾。关注 Claude 后续走向的人，可以从中判断产品路线和团队稳定性会不会受影响。</em>
+            <br><span style="font-size:12px;color:#aaa;">Fireship &middot; Sep 15 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">7.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=oPZLPUtmROo" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Did AI Kill React Native?</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">讨论 AI 编程兴起后 React Native 这类跨端框架是否还有价值。做移动端小项目的 vibe coder 可以据此决定技术选型，避免押错方向。</em>
+            <br><span style="font-size:12px;color:#aaa;">Theo (t3.gg) &middot; Sep 14 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">8.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=S2VJU5DQqlU" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">He Built The Ultimate Spy Tool (Free and Open-Source)</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">介绍一个免费开源的监控/情报类工具，展示其功能和搭建方式。对开源工具和自动化信息收集感兴趣的人，可以看它是否值得自己部署来用。</em>
+            <br><span style="font-size:12px;color:#aaa;">Matt Wolfe &middot; Sep 16 &middot; YouTube</span>
+          </td>
+        </tr></table>
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">🚀 Product Hunt 新品（11 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">9.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/tiun-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">tiun. — Auth, billing, and payments for AI builders</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">给 AI 开发者提供登录、计费和支付的一站式服务。vibe coder 做完小产品最头疼收钱和账号系统，接上它就能快速上线收费，不用自己写支付逻辑。</em>
+            <br><span style="font-size:12px;color:#aaa;">572 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">10.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/ami-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Ami AI — Lovable for getting customers</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">号称「获客版 Lovable」，用 AI 帮你找客户和做增长。产品做出来后不知道怎么推广的 vibe coder，可以用它自动跑获客流程，补上营销短板。</em>
+            <br><span style="font-size:12px;color:#aaa;">536 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">11.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/voiskey?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Voiskey — AI voice typing that sounds right in every app</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">在任何应用里都能用的 AI 语音输入，自动把口述转成通顺文字。写 prompt、写文档或回消息时，动嘴比打字快，适合懒得敲键盘的人。</em>
+            <br><span style="font-size:12px;color:#aaa;">518 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">12.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/sider-omni?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Sider Omni Sidebar — Give every Mac app an Agent Sidebar</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">给每个 Mac 应用加一个 agent 侧边栏，在任何界面里都能调 AI 帮忙。不用来回切窗口，写代码、看文档、回邮件时随手唤起 agent，工作流更顺。</em>
+            <br><span style="font-size:12px;color:#aaa;">376 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">13.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/text-agent-store?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Text Agent Store — A marketplace for AI agents you can text</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">一个用短信就能调用的 AI agent 应用商店，挑个 agent 发消息就能用。不想装 App、不想配 API 的人，发条短信就能让 agent 干活，门槛极低。</em>
+            <br><span style="font-size:12px;color:#aaa;">305 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">14.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/bolt-new?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Bolt Forge — Bolt's new agent with open-source models and 50X usage</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Bolt 推出新 agent，用开源模型并把用量额度提到 50 倍。习惯用 Bolt 快速生成应用的人，现在能跑更多次、成本更低，适合反复迭代小项目。</em>
+            <br><span style="font-size:12px;color:#aaa;">232 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">15.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/ariso?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Oats — Free open-source and on device meeting notetaker</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">免费开源的本地会议记录工具，录音和转写都在设备上完成。在意隐私、又想要会议纪要的人，可以自己部署，不用担心内容上传到别人服务器。</em>
+            <br><span style="font-size:12px;color:#aaa;">249 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">16.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/appwrite?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Appwrite 2.0 — The open-source cloud for agents and developers</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Appwrite 2.0 是面向 agent 和开发者的开源后端云，提供数据库、认证、存储等。vibe coder 做小应用时不用自己搭后端，接上就能跑，省掉大量配置。</em>
+            <br><span style="font-size:12px;color:#aaa;">250 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">17.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/weave?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Weave Router 2.0 — Subscription aware coding agent router</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">能识别你订阅情况的 coding agent 路由器，自动把任务分给合适的模型。同时订了多家服务的人，用它统一调度，避免额度浪费或重复付费。</em>
+            <br><span style="font-size:12px;color:#aaa;">341 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">18.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/bitrise?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Bitrise Remote Dev Environments — Cloud Macs your coding agents can actually build on</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">提供云端 Mac 环境，让 coding agent 能真正编译和构建 iOS 等项目。本地机器跑不动或没 Mac 的人，可以让 agent 在云上干活，适合做移动端小项目。</em>
+            <br><span style="font-size:12px;color:#aaa;">332 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">19.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/elva?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Elva — Goodbye, Postman. Your APIs have new consumers</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">面向 agent 时代的 API 调试工具，替代 Postman 的定位。当你的 API 主要消费者变成 AI agent 时，用它测试和调试接口，更贴合 agent 调用方式。</em>
+            <br><span style="font-size:12px;color:#aaa;">303 votes &middot; Product Hunt</span>
+          </td>
+        </tr></table>
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">🐙 GitHub 项目（16 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">20.&nbsp;</span>
+            <a href="https://github.com/affaan-m/ECC" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Affaan-m / ECC — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">给 Claude Code、Cursor 等 agent 加记忆、技能和安全层的优化系统。让 agent 记住项目上下文、按研究优先的方式干活，长期项目里不用反复交代背景。</em>
+            <br><span style="font-size:12px;color:#aaa;">+1,012 stars today &middot; 263,466 total &middot; JavaScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">21.&nbsp;</span>
+            <a href="https://github.com/BuilderIO/agent-native" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">BuilderIO / agent-native — A framework for building agentic apps</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">BuilderIO 出的 agent 应用开发框架，帮你把 AI agent 直接做进网页应用里。适合 vibe coder 快速搭一个带 agent 的小产品，不用从零设计架构。</em>
+            <br><span style="font-size:12px;color:#aaa;">+89 stars today &middot; 5,076 total &middot; TypeScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">22.&nbsp;</span>
+            <a href="https://github.com/cloudflare/security-audit-skill" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Cloudflare / security-audit-skill — A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Cloudflare 开源的 agent skill，让 coding agent 分阶段做安全审计并输出可验证的机器可读结果。给自己的小项目做安全检查时，装个 skill 就能跑。</em>
+            <br><span style="font-size:12px;color:#aaa;">+2,375 stars today &middot; 17,706 total &middot; JavaScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">23.&nbsp;</span>
+            <a href="https://github.com/addyosmani/agent-skills" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Addyosmani / agent-skills — Production-grade engineering skills for AI coding agents.</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 2 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Addy Osmani 整理的工程级 agent skill 合集，把资深工程师的实践打包成可安装技能。给 Claude Code 装上后，代码质量和工程规范能明显提升。</em>
+            <br><span style="font-size:12px;color:#aaa;">+729 stars today &middot; 97,520 total &middot; JavaScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">24.&nbsp;</span>
+            <a href="https://github.com/alibaba/open-code-review" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Alibaba / open-code-review — Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 2 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">阿里开源的代码审查工具，规则引擎加 LLM agent 混合，能精确到行给评论。兼容 OpenAI 和 Anthropic，给自己的项目接上就能自动 review，补上 vibe coding 的质量短板。</em>
+            <br><span style="font-size:12px;color:#aaa;">38,246 total &middot; Go &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">25.&nbsp;</span>
+            <a href="https://github.com/Tencent/WeKnora" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Tencent / WeKnora — Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">腾讯开源的知识库平台，把一堆文档变成可查询的 RAG 和自动维护的 Wiki。想给自己资料做问答机器人时，不用自己搭 RAG 管线，部署即用。</em>
+            <br><span style="font-size:12px;color:#aaa;">27,903 total &middot; Go &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">26.&nbsp;</span>
+            <a href="https://github.com/mksglu/context-mode" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Mksglu / context-mode — Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.</a><span style="font-size:12px;color:#d97706;margin-left:8px;">· 已出现 3 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">把 agent 的工具输出压缩 98% 并持久化会话记忆，通过 MCP 支持 17 个平台。长会话不再爆上下文，agent 记得住之前做的事，大项目里特别省 token。</em>
+            <br><span style="font-size:12px;color:#aaa;">23,750 total &middot; TypeScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">27.&nbsp;</span>
+            <a href="https://github.com/max-sixty/worktrunk" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Max-sixty / worktrunk — Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">管理 Git worktree 的 CLI，专为并行跑多个 AI agent 设计。让每个 agent 在独立分支上干活互不打架，同时开几个 agent 改不同功能时不会冲突。</em>
+            <br><span style="font-size:12px;color:#aaa;">8,167 total &middot; Rust &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">28.&nbsp;</span>
+            <a href="https://github.com/stablyai/orca" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Stablyai / orca — Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">管理一群并行 coding agent 的桌面应用，用自己的订阅跑任意 agent，支持手机和远程。想同时指挥多个 agent 干活时，有个统一界面比开一堆终端舒服。</em>
+            <br><span style="font-size:12px;color:#aaa;">73,340 total &middot; TypeScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">29.&nbsp;</span>
+            <a href="https://github.com/Panniantong/Agent-Reach" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Panniantong / Agent-Reach — Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.</a><span style="font-size:12px;color:#d97706;margin-left:8px;">· 已出现 3 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">一个 CLI 让 agent 读取和搜索 Twitter、Reddit、YouTube、B站、小红书等平台，不收 API 费。想让 agent 帮你做跨平台调研或内容收集时，直接接上就能用。</em>
+            <br><span style="font-size:12px;color:#aaa;">83,757 total &middot; Python &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">30.&nbsp;</span>
+            <a href="https://github.com/heygen-com/hyperframes" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Heygen-com / hyperframes — Write HTML. Render video. Built for agents.</a><span style="font-size:12px;color:#d97706;margin-left:8px;">· 已出现 3 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">用写 HTML 的方式生成视频，专为 agent 设计。可以让 AI 直接产出视频内容，适合做自动化内容生成或给 agent 加视频输出能力，不用学剪辑软件。</em>
+            <br><span style="font-size:12px;color:#aaa;">51,868 total &middot; TypeScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">31.&nbsp;</span>
+            <a href="https://github.com/blader/humanizer" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Blader / humanizer — Agent skill that removes signs of AI-generated writing from text</a><span style="font-size:12px;color:#d97706;margin-left:8px;">· 已出现 4 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">一个 agent skill，专门去掉文本里的 AI 腔，让输出读起来像人写的。发博客、写邮件或做内容时，装上它就能避免一眼被看出是 AI 生成。</em>
+            <br><span style="font-size:12px;color:#aaa;">50,549 total &middot; Python &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">32.&nbsp;</span>
+            <a href="https://github.com/petergyang/no-ai-slop" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Petergyang / no-ai-slop — Removes 20+ patterns of AI slop from any piece of writing.</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">识别并清除 20 多种 AI 写作套路，让文字更自然。跟 humanizer 类似但规则更细，适合对输出质量要求高、不想被 AI 味拖累的写作者。</em>
+            <br><span style="font-size:12px;color:#aaa;">10,760 total &middot; Python &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">33.&nbsp;</span>
+            <a href="https://github.com/danny-avila/LibreChat" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Danny-avila / LibreChat — Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">开源的自托管 ChatGPT 替代品，支持 MCP、agent、多模型切换和代码解释器。想自己搭一个统一 AI 聊天界面、接各家 API 的人，部署一次全搞定。</em>
+            <br><span style="font-size:12px;color:#aaa;">44,470 total &middot; TypeScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">34.&nbsp;</span>
+            <a href="https://github.com/cline/cline" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Cline / cline — Autonomous coding agent as an SDK, IDE extension, or CLI assistant.</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Cline 是能当 IDE 插件、CLI 或 SDK 用的自主 coding agent。想在 VS Code 里直接让 AI 改代码、又不想被单一厂商绑定的 vibe coder，可以试试这个开源方案。</em>
+            <br><span style="font-size:12px;color:#aaa;">68,867 total &middot; TypeScript &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">35.&nbsp;</span>
+            <a href="https://github.com/ayghri/i-have-adhd" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Ayghri / i-have-adhd — A skill to stop your coding agent from burying the answer. ADHD-friendly output.</a><span style="font-size:12px;color:#d97706;margin-left:8px;">· 已出现 5 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">让 coding agent 把答案放最前面、别埋在长篇解释里，输出更简洁直接。适合没耐心读大段 AI 回复的人，一眼看到关键结论和下一步操作。</em>
+            <br><span style="font-size:12px;color:#aaa;">49,106 total &middot; Python &middot; GitHub Trending</span>
+          </td>
+        </tr></table>
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">📰 文章 / 博客（18 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">36.&nbsp;</span>
+            <a href="https://code.claude.com/docs/en/changelog" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Claude Code now reads AGENTS.md if there is no Claude.md</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 2 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Claude Code 现在会自动读取 AGENTS.md 作为项目说明文件，跟 Cursor、Codex 等工具共用同一份配置。你只要维护一个文件，所有 AI 编程工具都能读懂项目背景，省去重复解释。</em>
+            <br><span style="font-size:12px;color:#aaa;">723 pts &middot; 273 comments &middot; <a href="https://news.ycombinator.com/item?id=49760187" style="color:#aaa;">discuss</a> &middot; Hacker News</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">37.&nbsp;</span>
+            <a href="https://twitter.com/trq212/status/2101009392611278961" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Anthropic finally adds AGENTS.md support to Claude Code</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 2 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Anthropic 官方确认 Claude Code 支持 AGENTS.md 标准，意味着跨工具的项目配置文件终于统一。对同时用 Claude Code 和 Cursor 的人，一份说明文件走天下，不用再维护两套。</em>
+            <br><span style="font-size:12px;color:#aaa;">52 pts &middot; 10 comments &middot; <a href="https://news.ycombinator.com/item?id=49758250" style="color:#aaa;">discuss</a> &middot; Hacker News</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">38.&nbsp;</span>
+            <a href="https://github.com/ordewell/ordewell" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Ordewell – turn one goal into an ordered plan of coding-agent tasks</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">输入一个目标，Ordewell 自动拆成有序的 coding agent 任务清单并逐个执行。适合不会写复杂 prompt 的人，把「我想做个 X」变成 agent 能跑的步骤，减少来回调试。</em>
+            <br><span style="font-size:12px;color:#aaa;">55 pts &middot; 34 comments &middot; <a href="https://news.ycombinator.com/item?id=49712276" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">39.&nbsp;</span>
+            <a href="https://github.com/greentfrapp/panel" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Panel – A research workspace where the agent can build its own panes</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">一个研究型工作台，agent 能自己生成并排列 UI 面板来展示结果。适合做资料调研或数据分析，agent 边查边搭界面，你直接看可视化输出，不用自己写前端。</em>
+            <br><span style="font-size:12px;color:#aaa;">54 pts &middot; 22 comments &middot; <a href="https://news.ycombinator.com/item?id=49712621" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">40.&nbsp;</span>
+            <a href="https://github.com/pizza-bot-app/pizza-bot" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Pizza Bot – An inbox for AI agents that work in the background</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">给后台运行的 AI agent 做一个统一收件箱，任务结果和消息集中查看。适合同时跑多个 agent 的人，不用盯着每个终端，像收邮件一样处理 agent 的产出。</em>
+            <br><span style="font-size:12px;color:#aaa;">61 pts &middot; 37 comments &middot; <a href="https://news.ycombinator.com/item?id=49713894" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">41.&nbsp;</span>
+            <a href="https://skillbay.sh/" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Craigslist for agent skills, curated by a human</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">人工筛选的 agent skill 集市，像逛 Craigslist 一样找现成技能装到 Claude Code 等工具里。不用自己写，直接挑别人验证过的 skill，快速扩展 agent 能力。</em>
+            <br><span style="font-size:12px;color:#aaa;">27 pts &middot; 18 comments &middot; <a href="https://news.ycombinator.com/item?id=49743459" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">42.&nbsp;</span>
+            <a href="https://github.com/demeyer1/Autobot" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: AutoBot – live voice control for long-running AI work</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">用语音实时指挥长时间运行的 AI 任务，边做别的事边用嘴调整 agent 方向。适合跑大任务时不想一直盯屏幕的人，喊一句就能改需求或叫停。</em>
+            <br><span style="font-size:12px;color:#aaa;">20 pts &middot; 3 comments &middot; <a href="https://news.ycombinator.com/item?id=49743478" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">43.&nbsp;</span>
+            <a href="https://stale.jock.pl/" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: How Stale Is Your AI? Release age and training cutoff for 20 models</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">一页看清 20 个主流模型的发布时长和训练数据截止时间。选模型时能快速判断哪个够新、会不会答不上近期的事，避免用过期模型踩坑。</em>
+            <br><span style="font-size:12px;color:#aaa;">81 pts &middot; 49 comments &middot; <a href="https://news.ycombinator.com/item?id=49726343" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">44.&nbsp;</span>
+            <a href="https://www.ax-check.com/" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Ax-check.com – Can agents use your product?</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">检测你的网站或产品能不能被 AI agent 正常操作使用。做小工具或 SaaS 的人可以自查，确保 agent 能帮你跑流程，而不是被登录和按钮卡住。</em>
+            <br><span style="font-size:12px;color:#aaa;">36 pts &middot; 39 comments &middot; <a href="https://news.ycombinator.com/item?id=49744416" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">45.&nbsp;</span>
+            <a href="https://www.aclif.ai/" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Aclif – Agent CLI framework: one grammar, canonical names across SaaS</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">用统一语法让 agent 操作各种 SaaS 工具，命令名跨平台一致。想让 agent 帮你操作 Notion、Slack 等服务时，不用为每个平台学一套命令。</em>
+            <br><span style="font-size:12px;color:#aaa;">35 pts &middot; 17 comments &middot; <a href="https://news.ycombinator.com/item?id=49743382" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">46.&nbsp;</span>
+            <a href="https://github.com/callbacked/kinesis" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Kinesis – Control your Mac with the Meta Neural Band</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">用 Meta 神经腕带的手势控制 Mac，把肌电信号变成操作指令。属于尝鲜型硬件玩法，适合喜欢折腾新交互方式的人，但目前实用性有限。</em>
+            <br><span style="font-size:12px;color:#aaa;">122 pts &middot; 46 comments &middot; <a href="https://news.ycombinator.com/item?id=49695408" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">47.&nbsp;</span>
+            <a href="https://mysetup.ai/" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Share your AI Setup, Learn from others</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">分享和围观别人的 AI 工具配置，看大家用什么模型、插件和工作流。想优化自己的 AI 工作流时，可以直接抄别人的成熟搭配，少走弯路。</em>
+            <br><span style="font-size:12px;color:#aaa;">244 pts &middot; 138 comments &middot; <a href="https://news.ycombinator.com/item?id=49740105" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">48.&nbsp;</span>
+            <a href="https://cactuscompute.com/needle" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Cactus Needle 3: 8-29MB automation models can match DeepSeek V4 Flash</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">只有 8-29MB 的微型模型，在自动化任务上能对标 DeepSeek V4 Flash。可以塞进本地或边缘设备跑简单 agent，不花 API 费用，适合轻量自动化场景。</em>
+            <br><span style="font-size:12px;color:#aaa;">229 pts &middot; 91 comments &middot; <a href="https://news.ycombinator.com/item?id=49748553" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">49.&nbsp;</span>
+            <a href="https://sunkcost.ai/" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Sunk Cost – How long until a local LLM rig pays for itself?</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">算一算自己攒本地 LLM 机器多久能回本，对比 API 花费。想跑本地模型但不确定值不值的人，可以用它快速估算，避免冲动买显卡。</em>
+            <br><span style="font-size:12px;color:#aaa;">46 pts &middot; 99 comments &middot; <a href="https://news.ycombinator.com/item?id=49706656" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">50.&nbsp;</span>
+            <a href="https://openai.com/index/astra-for-law" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Introducing Astra for Law</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">OpenAI 推出面向法律行业的 Astra 产品，处理合同、检索和文书类工作。虽然偏垂直行业，但展示了 GPT-6 Astra 在专业场景的落地方式，可参考其工作流设计。</em>
+            <br><span style="font-size:12px;color:#aaa;">Sep 17 &middot; OpenAI blog</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">51.&nbsp;</span>
+            <a href="https://openai.com/index/hex-gpt-6-astra" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Hex turns complex analysis into visual reports with GPT‑6 Astra</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Hex 用 GPT-6 Astra 把复杂数据分析变成可视化报告。做数据类小工具的人可以参考这种「自然语言进、图表出」的模式，给自己的项目加类似能力。</em>
+            <br><span style="font-size:12px;color:#aaa;">Sep 16 &middot; OpenAI blog</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">52.&nbsp;</span>
+            <a href="https://openai.com/index/perplexity-improving-accuracy-with-astra" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Perplexity trusts GPT-6 Astra with end-to-end systems</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Perplexity 用 GPT-6 Astra 提升搜索问答准确度，说明 Astra 在端到端系统里已能扛主力。关注模型选型的人可以据此判断 Astra 的实际可用性和稳定性。</em>
+            <br><span style="font-size:12px;color:#aaa;">Sep 14 &middot; OpenAI blog</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">53.&nbsp;</span>
+            <a href="https://openai.com/index/fyxer" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">How Fyxer built an AI executive assistant people trust</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Fyxer 用 OpenAI 模型做 AI 行政助理，自动整理邮件和日程。想做个人助理类小工具的人，可以看它怎么处理信任和权限问题，避免用户不敢用。</em>
+            <br><span style="font-size:12px;color:#aaa;">Sep 14 &middot; OpenAI blog</span>
+          </td>
+        </tr></table>
+  <p style="color:#ccc;font-size:11px;margin-top:24px;">Signal &mdash; built for OIM3640</p>
+</body>
+</html>
