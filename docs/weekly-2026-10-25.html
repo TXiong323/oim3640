@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:640px;margin:0 auto;padding:20px;color:#1a1a1a;">
+  <p style="font-size:13px;margin-bottom:16px;"><a href="./index.html" style="color:#888;text-decoration:none;">← Back to archive</a></p>
+  
+  <h2 style="border-bottom:2px solid #1a1a1a;padding-bottom:8px;">
+    Signal &mdash; AI/Tech Digest &middot; October 25, 2026
+  </h2>
+  
+  <p style="color:#888;font-size:12px;">
+    19 picks from 141 candidates &middot; HN + Show HN + YouTube + Product Hunt + GitHub + Blogs &middot; last 7d
+  </p>
+  
+  <div style="background:#f7f7f7;border-left:3px solid #1a1a1a;padding:12px 16px;margin:16px 0;font-size:14px;line-height:1.7;color:#333;">
+    本周真正落地的是「给 agent 用的基础设施」：1Password 让 AI 代登录而不暴露密码，Composio 让 agent 自己付费买工具，Beam.win 把 Mac 上的 agent 窗口投到另一台设备。Claude Code 生态继续膨胀，hallmark 反 AI 味设计、Karpathy 风格 CLAUDE.md、SEO 技能包都是开箱即用。模型侧 Kimi K3.1 和 Opus 5.5 的讨论集中在「更聪明是否必要」，而 OpenAI 把模型搬上 Google Cloud 是本周最实际的分发变化。
+  </div>
+  
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">📺 YouTube 视频（2 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">1.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=5sEVvu4mQ8g" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">They actually did it... (Kimi K3.1)</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">实测 Kimi K3.1 的开源模型表现，看它到底能不能替代闭源模型干活。想省钱跑本地或低价 API 的话，这是本周最值得看的评测。</em>
+            <br><span style="font-size:12px;color:#aaa;">Matthew Berman &middot; Oct 24 &middot; YouTube</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">2.&nbsp;</span>
+            <a href="https://www.youtube.com/watch?v=m-B3jIMMmUE" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Your prompts kinda suck</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">讲为什么大多数提示词效果差，以及怎么改。对天天用 Claude Code 写需求的人来说，改几个措辞就能明显提升输出质量。</em>
+            <br><span style="font-size:12px;color:#aaa;">Theo (t3.gg) &middot; Oct 18 &middot; YouTube</span>
+          </td>
+        </tr></table>
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">🚀 Product Hunt 新品（6 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">3.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/1password?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">1Password for Agents — Let AI agents sign in for you without seeing your passwords</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">1Password 推出的 agent 登录方案，让 AI 自动登录网站但看不到你的明文密码。做需要登录的自动化小工具时不用再硬编码账号，安全又省事。</em>
+            <br><span style="font-size:12px;color:#aaa;">241 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">4.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/composio?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Composio Instant — The easiest way for AI agents to pay for their own tools</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">让 AI agent 自己为调用的 API 和工具付费，不用你手动配 key 和账单。做自动化 agent 时能直接跑通付费服务，省掉一堆配置环节。</em>
+            <br><span style="font-size:12px;color:#aaa;">335 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">5.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/beam-win?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Beam.win — Run AI agents on one Mac and use its windows on another</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">在一台 Mac 上跑 AI agent，在另一台设备上直接操作它的窗口。用旧电脑当 agent 主机、主力机干活，对多设备 vibe coder 很实用。</em>
+            <br><span style="font-size:12px;color:#aaa;">377 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">6.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/claude?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Claude Duet — Proactive agent that understands what needs your attention</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">主动型 Claude agent，会自己判断哪些事需要你关注并提醒。适合不想一直盯屏幕、希望 AI 主动推活过来的轻量工作流。</em>
+            <br><span style="font-size:12px;color:#aaa;">336 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">7.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/useit-studio-from-idea-to-delivery?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">UseIt Studio — Your AI design agent for real, editable project files.</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">AI 设计 agent 直接产出可编辑的项目文件，不是死图。做小产品时能让 AI 出设计稿再手动微调，省掉从零画 UI 的时间。</em>
+            <br><span style="font-size:12px;color:#aaa;">328 votes &middot; Product Hunt</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">8.&nbsp;</span>
+            <a href="https://www.producthunt.com/products/realtime-max-mini?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Signal+%28ID%3A+282581%29" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">ElevenLabs Realtime — Realtime voice agent models with 570ms to first audio</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">ElevenLabs 实时语音模型，首音频延迟 570ms。做语音对话小工具时能接近真人反应速度，体验比传统 TTS 流畅很多。</em>
+            <br><span style="font-size:12px;color:#aaa;">187 votes &middot; Product Hunt</span>
+          </td>
+        </tr></table>
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">🐙 GitHub 项目（5 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">9.&nbsp;</span>
+            <a href="https://github.com/Nutlope/hallmark" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Nutlope / hallmark — Anti-AI-slop design skill for Claude Code, Cursor, and Codex.</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 2 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">给 Claude Code 和 Cursor 用的设计技能，专门去掉 AI 生成页面那股塑料味。做小项目时让 AI 出的 UI 更像人做的，少改很多样式。</em>
+            <br><span style="font-size:12px;color:#aaa;">+1,359 stars today &middot; 33,284 total &middot; CSS &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">10.&nbsp;</span>
+            <a href="https://github.com/multica-ai/andrej-karpathy-skills" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Multica-AI / andrej-karpathy-skills — A single CLAUDE.md file to improve Claude Code behavior</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">一个 CLAUDE.md 文件，把 Karpathy 总结的 LLM 写代码常见坑写成规则。放进项目就能让 Claude Code 少犯低级错误，零配置直接用。</em>
+            <br><span style="font-size:12px;color:#aaa;">223,677 total &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">11.&nbsp;</span>
+            <a href="https://github.com/AgriciDaniel/claude-seo" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">AgriciDaniel / claude-seo — Universal SEO skill for Claude Code</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">Claude Code 的 SEO 技能包，26 个子技能覆盖技术 SEO、schema、llms.txt 等。做完小网站直接让 AI 帮你体检优化，不用另买工具。</em>
+            <br><span style="font-size:12px;color:#aaa;">+179 stars today &middot; 20,481 total &middot; Python &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">12.&nbsp;</span>
+            <a href="https://github.com/Graphify-Labs/graphify" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Graphify-Labs / graphify — Turn any codebase into a queryable knowledge graph</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">把代码库、文档、SQL 和 PDF 变成可查询知识图谱的 Claude Code 技能。接手陌生项目时让 AI 先理清结构，问问题比翻文件快得多。</em>
+            <br><span style="font-size:12px;color:#aaa;">134,938 total &middot; Python &middot; GitHub Trending</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">13.&nbsp;</span>
+            <a href="https://github.com/akitaonrails/ai-memory" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Akitaonrails / ai-memory — Long term memory for agent coding CLIs</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">给 Claude Code 等 agent CLI 加长期记忆，还能在不同厂商的 agent 之间交接上下文。长期项目不用每次重讲背景，换工具也不丢记忆。</em>
+            <br><span style="font-size:12px;color:#aaa;">13,456 total &middot; Rust &middot; GitHub Trending</span>
+          </td>
+        </tr></table>
+  <h3 style="font-size:14px;font-weight:700;color:#555;margin:24px 0 4px;">📰 文章 / 博客（5 个）</h3>
+  <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">14.&nbsp;</span>
+            <a href="https://github.com/AbdullahAlhariri/penmentor" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Penmentor – Claude marks up your handwritten math like a teacher</a>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">拍下手写数学题，Claude 像老师一样批改标注。给小孩辅导作业或自己刷题时能立刻得到反馈，不用手动输入公式。</em>
+            <br><span style="font-size:12px;color:#aaa;">66 pts &middot; 9 comments &middot; <a href="https://news.ycombinator.com/item?id=50167604" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">15.&nbsp;</span>
+            <a href="https://github.com/omnara-ai/omnara" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: Omnara – Open-source alternative to Claude Managed Agents</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">开源的 Claude 托管 agent 替代品，可以自己部署跑多步任务。想搭自动化流程又不想被平台锁定时，这是个能直接上手的起点。</em>
+            <br><span style="font-size:12px;color:#aaa;">112 pts &middot; 34 comments &middot; <a href="https://news.ycombinator.com/item?id=50183892" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">16.&nbsp;</span>
+            <a href="https://github.com/finereli/whatsapp-mcp" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: WhatsApp MCP running free on Cloudflare</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">跑在 Cloudflare 上的 WhatsApp MCP，免费让 AI 读写你的 WhatsApp。做消息自动回复或摘要小工具时不用自己搭服务器。</em>
+            <br><span style="font-size:12px;color:#aaa;">157 pts &middot; 85 comments &middot; <a href="https://news.ycombinator.com/item?id=50145715" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">17.&nbsp;</span>
+            <a href="https://www.typeui.sh/micro-interactions" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">Show HN: UI micro interactions prompts for AI</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">一组现成的 UI 微交互提示词，直接喂给 AI 就能生成按钮悬停、加载动画等细节。做小项目时让界面不那么死板，复制粘贴即可。</em>
+            <br><span style="font-size:12px;color:#aaa;">80 pts &middot; 46 comments &middot; <a href="https://news.ycombinator.com/item?id=50199290" style="color:#aaa;">discuss</a> &middot; Show HN</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0; border-bottom:1px solid #eee; vertical-align:top;">
+            <span style="color:#bbb;font-size:12px;">18.&nbsp;</span>
+            <a href="https://openai.com/index/openai-models-google-cloud" style="font-size:15px;font-weight:600;color:#1a1a1a;text-decoration:none;">OpenAI models are coming to Google Cloud</a><span style="font-size:12px;color:#999;margin-left:8px;">· 已出现 1 天</span>
+            <br><em style="font-size:13px;color:#666;line-height:1.5;">OpenAI 模型将上架 Google Cloud，用 GCP 的项目可以直接调 GPT 系列。已经在 Google 生态里的 vibe coder 少一层账号和账单麻烦。</em>
+            <br><span style="font-size:12px;color:#aaa;">Oct 21 &middot; OpenAI blog</span>
+          </td>
+        </tr></table>
+  <p style="color:#ccc;font-size:11px;margin-top:24px;">Signal &mdash; built for OIM3640</p>
+</body>
+</html>
